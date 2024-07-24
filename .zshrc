@@ -124,7 +124,6 @@ export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
 export QSYS_ROOTDIR="/home/goodhumored/intelFPGA/22.1std/quartus/sopc_builder/bin"
 export TERM="screen-256color"
-source /usr/share/zsh/plugins/pnpm-shell-completion/pnpm-shell-completion.zsh
 
 # pnpm
 export PNPM_HOME="/home/goodhumored/.local/share/pnpm"
