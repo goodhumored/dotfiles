@@ -141,4 +141,4 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
 export QSYS_ROOTDIR="/home/goodhumored/intelFPGA/22.1std/quartus/sopc_builder/bin"
-source ~/completion-for-pnpm.bash
+#source ~/completion-for-pnpm.bash
