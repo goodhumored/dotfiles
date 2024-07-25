@@ -1,0 +1,27 @@
+[user]
+	email = goodhumored@vk.com
+	name = goodhumored
+	signingkey = 498CEE03B241AECE
+[push]
+	autoSetupRemote = true
+[credential]
+	helper = store
+[init]
+	defaultBranch = main
+
+[core]
+	editor = nvim
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
