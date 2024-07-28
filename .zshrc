@@ -112,6 +112,7 @@ export QSYS_ROOTDIR="/home/goodhumored/intelFPGA/22.1std/quartus/sopc_builder/bi
 export TERM="screen-256color"
 
 export LM_LICENSE_FILE=C:\\flexlm\\lic_modelsim.txt
+export PATH=$HOME/.local/bin:$PATH
 
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(fzf --zsh)"
