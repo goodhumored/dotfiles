@@ -29,7 +29,7 @@ if [[ -n $SSH_CONNECTION ]]; then
 fi
 
 PROMPT='
-$(ssh)%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info)$(virtualenv_prompt_info) ⌚ %{$fg_bold[red]%}%*%{$reset_color%}
+%{$ssh}%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info)$(virtualenv_prompt_info) ⌚ %{$fg_bold[red]%}%*%{$reset_color%}
 $ '
 
 # RPROMPT='$(ruby_prompt_info)'
