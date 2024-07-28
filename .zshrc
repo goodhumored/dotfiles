@@ -1,7 +1,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-ZSH_THEME="agnoster"
+ZSH_THEME="amuse" # set by `omz`
 
 zstyle ':omz:update' mode auto      # update automatically without asking
 
@@ -110,7 +110,6 @@ export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
 export QSYS_ROOTDIR="/home/goodhumored/intelFPGA/22.1std/quartus/sopc_builder/bin"
 export TERM="screen-256color"
-
 
 export LM_LICENSE_FILE=C:\\flexlm\\lic_modelsim.txt
 
