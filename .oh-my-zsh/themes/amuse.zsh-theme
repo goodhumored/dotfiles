@@ -18,13 +18,18 @@ function preexec() {
 function precmd() {
   if [ $timer ]; then
     timer_show=$(($SECONDS - $timer))
-    export RPROMPT="%F{cyan}${timer_show}s %{$reset_color%}"
+    export RPROMPT="%F{green}${timer_show}s %{$reset_color%}"
     unset timer
   fi
 }
 
+ssh=""
+if [[ -n $SSH_CONNECTION ]]; then
+  ssh="🌐"
+fi
+
 PROMPT='
-%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info)$(virtualenv_prompt_info) ⌚ %{$fg_bold[red]%}%*%{$reset_color%}
+$(ssh)%{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt_info)$(virtualenv_prompt_info) ⌚ %{$fg_bold[red]%}%*%{$reset_color%}
 $ '
 
 # RPROMPT='$(ruby_prompt_info)'
