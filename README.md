@@ -11,6 +11,7 @@
 #### Required
 
 - git
+- gcc
 - stow - dotfiles symlink in home
 - fzf - for fuzzy search
 - neovim - editor
@@ -27,13 +28,16 @@ Ubuntu:
 
 ```bash
 sudo apt update && sudo apt update
-sudo apt install git tmux neovim stow fzf bat eza fd
+sudo apt install git tmux neovim stow fzf bat eza fd gcc
 curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
 ```
 
 Arch:
 ```bash
-sudo yay -S git tmux neovim zoxide stow fzf bat eza fd
+sudo yay -S git tmux neovim zoxide stow fzf bat eza fd gcc
 ```
 
 ## Installation
