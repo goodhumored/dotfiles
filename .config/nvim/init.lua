@@ -18,6 +18,9 @@ vim.opt.tabstop = 2 -- Number of spaces that a <Tab> counts for
 vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
 vim.opt.expandtab = true -- Use spaces instead of tabs
 
+-- word wrap options
+vim.opt.wrap = false -- disable wrap
+
 -- true if have nerd font installed
 vim.g.have_nerd_font = true
 
@@ -145,32 +148,27 @@ end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
 -- [[ Configure and install plugins ]]
---
---  To check the current status of your plugins, run
---    :Lazy
---
---  You can press `?` in this menu for help. Use `:q` to close the window
---
---  To update plugins you can run
---    :Lazy update
---
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
 	-- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
 	"tpope/vim-sleuth", -- Detect tabstop and shiftwidth automatically
-
-	-- NOTE: Plugins can also be added by using a table,
-	-- with the first argument being the link and the following
-	-- keys can be used to configure plugin behavior/loading/etc.
-	--
-	-- Use `opts = {}` to force a plugin to be loaded.
-	--
-
-	-- Here is a more advanced example where we pass configuration
-	-- options to `gitsigns.nvim`. This is equivalent to the following Lua:
-	--    require('gitsigns').setup({ ... })
-	--
-	-- See `:help gitsigns` to understand what the configuration keys do
+	{
+		"https://github.com/nvim-treesitter/nvim-treesitter-context.git",
+		opts = {
+			enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
+			max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
+			min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+			line_numbers = true,
+			multiline_threshold = 20, -- Maximum number of lines to show for a single context
+			trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+			mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+			-- Separator between context and content. Should be a single character string, like '-'.
+			-- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+			separator = nil,
+			zindex = 20, -- The Z-index of the context window
+			on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+		},
+	},
 	{ -- Adds git related signs to the gutter, as well as utilities for managing changes
 		"lewis6991/gitsigns.nvim",
 		opts = {
@@ -183,22 +181,6 @@ require("lazy").setup({
 			},
 		},
 	},
-
-	-- NOTE: Plugins can also be configured to run Lua code when they are loaded.
-	--
-	-- This is often very useful to both group configuration, as well as handle
-	-- lazy loading plugins that don't need to be loaded immediately at startup.
-	--
-	-- For example, in the following configuration, we use:
-	--  event = 'VimEnter'
-	--
-	-- which loads which-key before all the UI elements are loaded. Events can be
-	-- normal autocommands events (`:help autocmd-events`).
-	--
-	-- Then, because we use the `config` key, the configuration only runs
-	-- after the plugin has been loaded:
-	--  config = function() ... end
-
 	{ -- Useful plugin to show you pending keybinds.
 		"folke/which-key.nvim",
 		event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -213,18 +195,11 @@ require("lazy").setup({
 				{ "<leader>s", group = "[S]earch" },
 				{ "<leader>w", group = "[W]orkspace" },
 				{ "<leader>t", group = "[T]oggle" },
+				-- { "<leader>e", group = "[E]xplorer" },
 				{ "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
 			})
 		end,
 	},
-
-	-- NOTE: Plugins can specify dependencies.
-	--
-	-- The dependencies are proper plugin specifications as well - anything
-	-- you do for a plugin at the top level, you can do for a dependency.
-	--
-	-- Use the `dependencies` key to specify the dependencies of a particular plugin
-
 	{ -- Fuzzy Finder (files, lsp, etc)
 		"nvim-telescope/telescope.nvim",
 		event = "VimEnter",
@@ -245,42 +220,10 @@ require("lazy").setup({
 				end,
 			},
 			{ "nvim-telescope/telescope-ui-select.nvim" },
-
-			-- Useful for getting pretty icons, but requires a Nerd Font.
 			{ "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
 		},
 		config = function()
-			-- Telescope is a fuzzy finder that comes with a lot of different things that
-			-- it can fuzzy find! It's more than just a "file finder", it can search
-			-- many different aspects of Neovim, your workspace, LSP, and more!
-			--
-			-- The easiest way to use Telescope, is to start by doing something like:
-			--  :Telescope help_tags
-			--
-			-- After running this command, a window will open up and you're able to
-			-- type in the prompt window. You'll see a list of `help_tags` options and
-			-- a corresponding preview of the help.
-			--
-			-- Two important keymaps to use while in Telescope are:
-			--  - Insert mode: <c-/>
-			--  - Normal mode: ?
-			--
-			-- This opens a window that shows you all of the keymaps for the current
-			-- Telescope picker. This is really useful to discover what Telescope can
-			-- do as well as how to actually do it!
-
-			-- [[ Configure Telescope ]]
-			-- See `:help telescope` and `:help telescope.setup()`
 			require("telescope").setup({
-				-- You can put your default mappings / updates / etc. in here
-				--  All the info you're looking for is in `:help telescope.setup()`
-				--
-				-- defaults = {
-				--   mappings = {
-				--     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
-				--   },
-				-- },
-				-- pickers = {}
 				extensions = {
 					["ui-select"] = {
 						require("telescope.themes").get_dropdown(),
@@ -525,6 +468,11 @@ require("lazy").setup({
 						},
 					},
 				},
+				eslint = {
+					validate = "onSave",
+					autoFixOnSave = true,
+					autoFix = true,
+				},
 			}
 
 			-- Ensure the servers and tools above are installed
@@ -540,6 +488,7 @@ require("lazy").setup({
 			local ensure_installed = vim.tbl_keys(servers or {})
 			vim.list_extend(ensure_installed, {
 				"stylua", -- Used to format Lua code
+				"eslint_d",
 			})
 			require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -863,7 +812,134 @@ require("lazy").setup({
 			--    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
 		end,
 	},
-
+	{
+		"nvim-tree/nvim-tree.lua",
+		version = "*",
+		lazy = false,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		config = function()
+			require("nvim-tree").setup({})
+			local api = require("nvim-tree.api")
+			vim.keymap.set("n", "<leader>e", api.tree.toggle, { desc = "[E]xplorer" })
+			vim.keymap.set("n", "<leader>E", function()
+				api.tree.find_file({ open = true, focus = true })
+			end, { desc = "Focus file in [E]xplorer" })
+		end,
+	},
+	{
+		"https://github.com/christoomey/vim-tmux-navigator.git",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
+		{
+			"nvim-neotest/neotest",
+			dependencies = {
+				"marilari88/neotest-vitest",
+				"nvim-neotest/nvim-nio",
+			},
+			keys = {
+				{
+					"<leader>tr",
+					function()
+						require("neotest").run.run()
+					end,
+					desc = "[T]ests [R]un",
+				},
+				{
+					"<leader>tf",
+					function()
+						require("neotest").run.run(vim.fn.expand("%"))
+					end,
+					desc = "[T]ests run [F]ile",
+				},
+				{
+					"<leader>tdr",
+					function()
+						require("neotest").run.run({ strategy = "dap" })
+					end,
+					desc = "[T]est [D]ebug [R]elated",
+				},
+				{
+					"<leader>tdf",
+					function()
+						require("neotest").run.run({ vim.fn.expand("%"), strategy = "dap" })
+					end,
+					desc = "[T]ests [D]ebug [F]ile",
+				},
+				{
+					"<leader>twr",
+					function()
+						require("neotest").run.run({ vitestCommand = "vitest --watch" })
+					end,
+					desc = "[T]est [W]atch [R]elated",
+				},
+				{
+					"<leader>twf",
+					function()
+						require("neotest").run.run({ vim.fn.expand("%"), vitestCommand = "vitest --watch" })
+					end,
+					desc = "[T]ests [W]atch [F]ile",
+				},
+				{
+					"<leader>ts",
+					function()
+						require("neotest").summary.toggle()
+					end,
+					desc = "[T]ests [S]ummary",
+				},
+				{
+					"<leader>tx",
+					function()
+						require("neotest").run.stop()
+					end,
+					desc = "[T]est stop",
+				},
+				{
+					"<leader>to",
+					function()
+						require("neotest").output.open()
+					end,
+					desc = "[T]est [O]utput",
+				},
+				{
+					"<leader>tO",
+					function()
+						require("neotest").output_panel.toggle()
+					end,
+					desc = "[T]est [O]utput",
+				},
+			},
+			config = function()
+				local neotest = require("neotest")
+				neotest.setup({
+					adapters = {
+						require("neotest-vitest")({
+							-- Filter directories when searching for test files. Useful in large projects (see Filter directories notes).
+							filter_dir = function(name, rel_path, root)
+								return name ~= "node_modules" or name ~= "dist"
+							end,
+							-- is_test_file = function(file_path)
+							-- 	return file_path:match(".*%.spec%.ts") ~= nil
+							-- end,
+						}),
+					},
+				})
+			end,
+		},
+	},
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
 	-- place them in the correct locations.
