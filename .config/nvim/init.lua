@@ -113,6 +113,15 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+vim.keymap.set("n", "<Tab>", ":tabnext<CR>", { desc = "Switch to next tab", noremap = true, silent = true })
+vim.keymap.set("n", "<S-Tab>", ":tabprev<CR>", { desc = "Switch to previous tab", noremap = true, silent = true })
+vim.keymap.set("n", "<C-PageUp>", ":tabnext<CR>", { desc = "Switch to next tab", noremap = true, silent = true })
+vim.keymap.set("n", "<C-PageDown>", ":tabprev<CR>", { desc = "Switch to previous tab", noremap = true, silent = true })
+vim.keymap.set("n", "tl", ":tabnext<CR>", { desc = "[T]ab right", noremap = true, silent = true })
+vim.keymap.set("n", "th", ":tabprev<CR>", { desc = "[T]ab left", noremap = true, silent = true })
+vim.keymap.set("n", "tj", ":tabfirst<CR>", { desc = "[T]ab home", noremap = true, silent = true })
+vim.keymap.set("n", "tk", ":tablast<CR>", { desc = "[T]ab end", noremap = true, silent = true })
+
 -- Move selected line(s) up
 vim.api.nvim_set_keymap("n", "<A-k>", ":m .-2<CR>==", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
@@ -618,9 +627,9 @@ require("lazy").setup({
 
 					-- If you prefer more traditional completion keymaps,
 					-- you can uncomment the following lines
-					--['<CR>'] = cmp.mapping.confirm { select = true },
-					--['<Tab>'] = cmp.mapping.select_next_item(),
-					--['<S-Tab>'] = cmp.mapping.select_prev_item(),
+					["<CR>"] = cmp.mapping.confirm({ select = true }),
+					["<Tab>"] = cmp.mapping.select_next_item(),
+					["<S-Tab>"] = cmp.mapping.select_prev_item(),
 
 					-- Manually trigger a completion from nvim-cmp.
 					--  Generally you don't need this, because nvim-cmp will display
@@ -939,6 +948,8 @@ require("lazy").setup({
 				})
 			end,
 		},
+		-- firenvim (firefox neovim extension)
+		{ "glacambre/firenvim", build = ":call firenvim#install(0)" },
 	},
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
