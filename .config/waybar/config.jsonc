@@ -1,0 +1,15 @@
+// -*- mode: jsonc -*-
+{
+    "layer": "top", // Waybar at top layer
+    "height": 20, // Waybar height (to be removed for auto height)
+    "spacing": 4, // Gaps between modules (4px)
+    // Choose the order of the modules
+    "modules-left": ["custom/appmenuicon","wlr/taskbar",
+    ],
+    "modules-center": [
+        "hyprland/workspaces",
+    ],
+    "modules-right": ["bluetooth","pulseaudio","network","tray","backlight","battery","clock","custom/layout", "custom/exit"
+    ],
+    "include": ["~/.config/waybar/modules.json"],
+}
