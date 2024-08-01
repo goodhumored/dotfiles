@@ -130,6 +130,11 @@ vim.api.nvim_set_keymap("v", "<A-k>", ":m '<-2<CR>gv=gv", { noremap = true, sile
 vim.api.nvim_set_keymap("n", "<A-j>", ":m .+1<CR>==", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("v", "<A-j>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 
+-- vim.filetype.add({
+-- 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+--
+-- })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -141,6 +146,19 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
 	callback = function()
 		vim.highlight.on_yank()
+	end,
+})
+
+-- Hyprlang LSP
+vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
+	pattern = { "*.hl", "hypr*.conf" },
+	callback = function(event)
+		print(string.format("starting hyprls for %s", vim.inspect(event)))
+		vim.lsp.start({
+			name = "hyprlang",
+			cmd = { "hyprls" },
+			root_dir = vim.fn.getcwd(),
+		})
 	end,
 })
 
@@ -309,35 +327,6 @@ require("lazy").setup({
 			{ "Bilal2453/luvit-meta", lazy = true },
 		},
 		config = function()
-			-- Brief aside: **What is LSP?**
-			--
-			-- LSP is an initialism you've probably heard, but might not understand what it is.
-			--
-			-- LSP stands for Language Server Protocol. It's a protocol that helps editors
-			-- and language tooling communicate in a standardized fashion.
-			--
-			-- In general, you have a "server" which is some tool built to understand a particular
-			-- language (such as `gopls`, `lua_ls`, `rust_analyzer`, etc.). These Language Servers
-			-- (sometimes called LSP servers, but that's kind of like ATM Machine) are standalone
-			-- processes that communicate with some "client" - in this case, Neovim!
-			--
-			-- LSP provides Neovim with features like:
-			--  - Go to definition
-			--  - Find references
-			--  - Autocompletion
-			--  - Symbol Search
-			--  - and more!
-			--
-			-- Thus, Language Servers are external tools that must be installed separately from
-			-- Neovim. This is where `mason` and related plugins come into play.
-			--
-			-- If you're wondering about lsp vs treesitter, you can check out the wonderfully
-			-- and elegantly composed help section, `:help lsp-vs-treesitter`
-
-			--  This function gets run when an LSP attaches to a particular buffer.
-			--    That is to say, every time a new file is opened that is associated with
-			--    an lsp (for example, opening `main.rs` is associated with `rust_analyzer`) this
-			--    function will be executed to configure the current buffer
 			vim.api.nvim_create_autocmd("LspAttach", {
 				group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 				callback = function(event)
@@ -949,7 +938,71 @@ require("lazy").setup({
 			end,
 		},
 		-- firenvim (firefox neovim extension)
-		{ "glacambre/firenvim", build = ":call firenvim#install(0)" },
+		{
+			"glacambre/firenvim",
+			build = ":call firenvim#install(0)",
+			config = function()
+				vim.g.firenvim_config = {
+					globalSettings = { alt = "all" },
+					localSettings = {
+						[".*"] = {
+							cmdline = "neovim",
+							content = "text",
+							priority = 0,
+							selector = "textarea",
+							takeover = "never",
+						},
+						-- ["https?:\\/\\/(www\\.)?google\\.com.*"] = { takeover = "never", priority = 1 },
+					},
+				}
+			end,
+		},
+		{
+			"uga-rosa/ccc.nvim",
+			config = function()
+				vim.opt.termguicolors = true
+
+				local ccc = require("ccc")
+				local mapping = ccc.mapping
+
+				ccc.setup({
+					-- Your preferred settings
+					-- Example: enable highlighter
+					highlighter = {
+						auto_enable = true,
+						lsp = true,
+					},
+				})
+			end,
+		},
+		{
+			"rmagatti/auto-session",
+			lazy = false,
+			dependencies = {
+				"nvim-telescope/telescope.nvim", -- Only needed if you want to use sesssion lens
+			},
+			opts = {
+				auto_session_enabled = true,
+				auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
+				auto_save_enabled = true,
+				auto_restore_enabled = true,
+				auto_session_allowed_dirs = nil,
+				auto_session_create_enabled = true,
+				auto_session_enable_last_session = false,
+				auto_session_use_git_branch = false,
+				auto_restore_lazy_delay_enabled = true,
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+				log_level = "error",
+			},
+		},
+		{
+			"LudoPinelli/comment-box.nvim",
+			config = function()
+				vim.keymap.set({ "n", "v" }, "<leader>cb", "<cmd>CBccbox<CR>", { desc = "[C]omment [B]lock" })
+				vim.keymap.set({ "n", "v" }, "<leader>cl", "<cmd>CBccline<CR>", { desc = "[C]omment [L]ine" })
+				vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CBline<CR>", { desc = "[C]omment Simple [L]ine" })
+			end,
+		},
 	},
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
