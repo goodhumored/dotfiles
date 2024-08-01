@@ -1,0 +1,22 @@
+[window]
+
+decorations = "Full"
+decorations_theme_variant = "Dark" # "Dark"
+padding.x = 2
+padding.y = 2
+opacity = 0.9
+
+[font]
+
+normal.family = "Source Code Pro"
+bold.family = "Source Code Pro"
+italic.family = "Source Code Pro"
+bold_italic.family = "Source Code Pro"
+
+size = 11.0
+
+[cursor]
+
+style.shape = "Beam"
+vi_mode_style.shape = "Block"
+thickness = 0.2
