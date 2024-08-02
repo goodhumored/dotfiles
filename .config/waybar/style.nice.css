@@ -9,43 +9,39 @@
 @define-color iconcolor #FFFFFF;
 
 /* -----------------------------------------------------
-* General 
-* ----------------------------------------------------- */
+ * General 
+ * ----------------------------------------------------- */
 
 * {
-    font-family: monospace, "Fira", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-family: "Fira", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     border: none;
     border-radius: 0px;
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0);
-    border-bottom: 0px;
+    background-color: rgba(0,0,0,0.4);
+    border-bottom: 0px solid #ffffff;
     /* color: #FFFFFF; */
     transition-property: background-color;
     transition-duration: .5s;
 }
 
 /* -----------------------------------------------------
-* Workspaces 
-* ----------------------------------------------------- */
+ * Workspaces 
+ * ----------------------------------------------------- */
 
-#workspaces {
-    background-color: rgba(0,0,0,.2);
+ #workspaces {
     margin: 3px 7px 3px 3px;
-    padding: 0px 4px;
     border: 0px;
     font-size: 14px;
     color: @textcolor1;
-    border-radius: 16px;
 }
 
 #workspaces button {
     border: 0px;
     margin:4px 5px 4px 0px;
-    padding:0px 16px;
+    padding:0px 4px 0px 4px;
     color: @textcolor3;
-    border-radius: 16px;
     transition: all 0.5s ease-in-out;
 }
 
@@ -61,13 +57,13 @@ window#waybar {
 }
 
 /* -----------------------------------------------------
-* Tooltips
-* ----------------------------------------------------- */
+ * Tooltips
+ * ----------------------------------------------------- */
 
 tooltip {
     border-radius: 10px;
     background-color: @backgroundlight;
-        opacity:0.8;
+    opacity:0.8;
     padding:20px;
     margin:0px;
 }
@@ -76,9 +72,9 @@ tooltip label {
     color: @textcolor2;
 }
 
-/*-----------------------------------------------------
-* Window
-* ----------------------------------------------------- */
+/* -----------------------------------------------------
+ * Window
+ * ----------------------------------------------------- */
 
 #window {
     margin: 0px 15px 0px 0px;
@@ -93,8 +89,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Modules
-* ----------------------------------------------------- */
+ * Modules
+ * ----------------------------------------------------- */
 
 .modules-left > widget:first-child > #workspaces {
     margin-left: 0;
@@ -105,8 +101,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Custom Quicklinks
-* ----------------------------------------------------- */
+ * Custom Quicklinks
+ * ----------------------------------------------------- */
 
 #custom-brave, 
 #custom-browser, 
@@ -132,7 +128,6 @@ window#waybar.empty #window {
 #custom-quicklink4,
 #custom-quicklink5,
 #custom-quicklink6,
-#mpd
 #custom-quicklink7,
 #custom-quicklink8,
 #custom-quicklink9,
@@ -208,10 +203,10 @@ window#waybar.empty #window {
 
 
 /* -----------------------------------------------------
-* Idle Inhibator
-* ----------------------------------------------------- */
+ * Idle Inhibator
+ * ----------------------------------------------------- */
 
-#idle_inhibitor {
+ #idle_inhibitor {
     margin-right: 15px;
     font-size: 16px;
     font-weight: bold;
@@ -226,8 +221,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Custom Modules
-* ----------------------------------------------------- */
+ * Custom Modules
+ * ----------------------------------------------------- */
 
 #custom-appmenuicon {
     font-size: 20px;
@@ -236,8 +231,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Custom Exit
-* ----------------------------------------------------- */
+ * Custom Exit
+ * ----------------------------------------------------- */
 
 #custom-exit {
     margin: 0px 20px 0px 0px;
@@ -247,8 +242,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Custom Updates
-* ----------------------------------------------------- */
+ * Custom Updates
+ * ----------------------------------------------------- */
 
 #custom-updates {
     font-size: 14px;
@@ -269,8 +264,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Custom Youtube
-* ----------------------------------------------------- */
+ * Custom Youtube
+ * ----------------------------------------------------- */
 
 #custom-youtube {
     background-color: @backgroundlight;
@@ -281,10 +276,10 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Hardware Group
-* ----------------------------------------------------- */
+ * Hardware Group
+ * ----------------------------------------------------- */
 
-#disk,#memory,#cpu,#language {
+ #disk,#memory,#cpu,#language {
     margin:0px;
     padding:0px;
     font-size:14px;
@@ -296,8 +291,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Clock
-* ----------------------------------------------------- */
+ * Clock
+ * ----------------------------------------------------- */
 
 #clock {
     font-size: 15px;
@@ -306,10 +301,10 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Backlight
-* ----------------------------------------------------- */
+ * Backlight
+ * ----------------------------------------------------- */
 
-#backlight {
+ #backlight {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
@@ -318,10 +313,10 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Pulseaudio
-* ----------------------------------------------------- */
+ * Pulseaudio
+ * ----------------------------------------------------- */
 
-#pulseaudio {
+ #pulseaudio {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
@@ -333,8 +328,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Network
-* ----------------------------------------------------- */
+ * Network
+ * ----------------------------------------------------- */
 
 #network {
     font-size: 14px;
@@ -352,10 +347,10 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Bluetooth
-* ----------------------------------------------------- */
+ * Bluetooth
+ * ----------------------------------------------------- */
 
-#bluetooth, #bluetooth.on, #bluetooth.connected {
+ #bluetooth, #bluetooth.on, #bluetooth.connected {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
@@ -369,8 +364,8 @@ window#waybar.empty #window {
 }
 
 /* -----------------------------------------------------
-* Battery
-* ----------------------------------------------------- */
+ * Battery
+ * ----------------------------------------------------- */
 
 #battery {
     font-size: 14px;
@@ -384,10 +379,10 @@ window#waybar.empty #window {
 }
 
 @keyframes blink {
-to {
-    background-color: @backgroundlight;
-    color: @textcolor2;
-}
+    to {
+        background-color: @backgroundlight;
+        color: @textcolor2;
+    }
 }
 
 #battery.critical:not(.charging) {
@@ -400,8 +395,8 @@ to {
 }
 
 /* -----------------------------------------------------
-* Tray
-* ----------------------------------------------------- */
+ * Tray
+ * ----------------------------------------------------- */
 
 #tray {
     margin:0px 10px 0px 0px;
@@ -415,22 +410,3 @@ to {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
-
-/*
- *          ╭─────────────────────────────────────────────────────────╮
- *          │                         battery                         │
- *          ╰─────────────────────────────────────────────────────────╯
-*/
-#mpd {
-    color: #fff;
-}
-
-#mpd.disconnected {
-}
-
-#mpd.stopped {
-}
-
-#mpd.paused {
-}
-

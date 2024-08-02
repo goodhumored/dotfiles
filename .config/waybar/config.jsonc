@@ -9,7 +9,8 @@
     "modules-center": [
         "hyprland/workspaces",
     ],
-    "modules-right": ["bluetooth","pulseaudio","network","tray","backlight","battery","clock","custom/layout", "custom/exit"
+    "modules-right": ["custom/layout","mpd","bluetooth","pulseaudio","tray","backlight","network","clock", "battery"
+        
     ],
     "include": ["~/.config/waybar/modules.json"],
 }
