@@ -79,7 +79,7 @@ if command -v fd > /dev/null; then
   }
 
   if command -v bat > /dev/null; then 
-    export FZF_CTRL_T_OPTS="--preview 'bat -n --color=always --line-range :500 {}'"
+    export FZF_CTRL_T_OPTS="--preview '~/.config/scripts/preview-file.sh {}'"
   fi
   if command -v eza > /dev/null; then
     export FZF_ALT_C_OPTS="--preview 'eza --tree --color=always {} | head -200'"
@@ -89,10 +89,11 @@ if command -v fd > /dev/null; then
     shift
 
     case "$command" in
-        cd)           fzf --preview 'eza --tree --color=always {} | head -200'               "$@" ;;
-        export|unset) fzf --preview "eval 'echo \$' {}"                                      "$@" ;;
-        ssh)          fzf --preview 'dig {}'                                                 "$@" ;;
-        *)            fzf --preview "--preview 'bat -n --color=always --line-range :500 {}'" "$@" ;;
+        cd)           fzf --preview 'eza --tree --color=always {} | head -200' "$@" ;;
+        export|unset) fzf --preview "eval 'echo \$'{}" "$@" ;;
+        ssh)          fzf --preview 'dig {}' "$@" ;;
+        timg)         fzf --preview 'timg -p quarter -g50x50 {}' "$@" ;;
+        *)            fzf --preview "~/.config/scripts/preview-file.sh $@"  ;;
     esac
   }
 fi
