@@ -8,19 +8,14 @@
     "all-outputs": true,
     "format": "{icon}",
     "format-icons": {
-      "1": "",
-      "2": "",
+      "2": "",
+      "1": "",
       "3": "",
+      "4": "",
       "urgent": "",
       "focused": "",
       "default": ""
     },
-    // "format": "{icon}",
-    // "format-icons": {
-    //  "urgent": "!",
-    //  "active": "*",
-    //  "default": "0"
-    //},
     "persistent-workspaces": {
       "*": 5
     }
@@ -51,6 +46,82 @@
     "tooltip-format": "MPD (connected)",
     "tooltip-format-disconnected": "MPD (disconnected)"
   },
+  "custom/playerctl": {
+      "interval": 1,
+      "tooltip": false,
+      "return-type": "json",
+      "format": "",
+      "format-icons": {
+          "Playing": "|>",
+          "Paused": "||"
+      },
+      "exec": "~/.config/waybar/custom/playerctl.sh",
+    "on-click-right": "playerctl next",
+      "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl position 1+",
+      "on-scroll-down": "playerctl position 1-",
+      "signal": 5
+  },
+  "group/playerctl": {
+    "orientation": "inherit",
+    "children-class": "playerctl",
+    "modules": [
+      "custom/playerctl-prev",
+      "custom/playerctl-pause-play",
+      "custom/playerctl-next",
+      "custom/playerctl-title"
+    ]
+ 
+  },
+  "custom/playerctl-artist": {
+    "interval": 1,
+    "format": "{}",
+    "return-type": "json",
+    "exec": "playerctl metadata --format '{\"text\": \"{{markup_escape(artist)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
+    "on-click": "playerctl play-pause",
+  },
+  "custom/playerctl-title": {
+    "interval": 1,
+    "format": "{}",
+    "return-type": "json",
+    "exec": "~/.config/waybar/custom/playerctl.sh",
+    "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl position 1+",
+      "on-scroll-down": "playerctl position 1-",
+  },
+  "custom/playerctl-prev": {
+    "interval": 1,
+    "format": "",
+    "return-type": "json",
+    "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
+    "on-click": "playerctl previous",
+      "on-scroll-up": "playerctl position 1+",
+      "on-scroll-down": "playerctl position 1-",
+  },
+  "custom/playerctl-pause-play": {
+    "interval": 1,
+   "format": "{icon}",
+    "format-icons": {
+      "Playing": "",
+      "Paused": ""
+    },
+    "return-type": "json",
+    "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
+    "on-click": "playerctl play-pause",
+      "on-scroll-up": "playerctl position 1+",
+      "on-scroll-down": "playerctl position 1-",
+  },
+  "custom/playerctl-next": {
+    "interval": 1,
+    "format": "",
+    "return-type": "json",
+    "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
+    "on-click": "playerctl next",
+      "on-scroll-up": "playerctl position 1+",
+      "on-scroll-down": "playerctl position 1-",
+  },
+
+
 
   // Taskbar
   "wlr/taskbar": {

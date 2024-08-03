@@ -4,13 +4,21 @@
     "height": 20, // Waybar height (to be removed for auto height)
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
-    "modules-left": ["custom/appmenuicon","wlr/taskbar",
+    "modules-left": [
+        "custom/appmenuicon",
+        "wlr/taskbar",
     ],
     "modules-center": [
         "hyprland/workspaces",
     ],
-    "modules-right": ["custom/layout","mpd","bluetooth","pulseaudio","tray","backlight","network","clock", "battery"
-        
+    "modules-right": [
+        "group/playerctl",
+        "custom/layout",
+        "pulseaudio",
+        "tray",
+        "backlight",
+        "clock",
+        "battery"
     ],
     "include": ["~/.config/waybar/modules.json"],
 }
