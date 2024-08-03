@@ -19,7 +19,7 @@
 }
 
 window#waybar {
-    background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
     border-bottom: 0px;
     /* color: #FFFFFF; */
     transition-property: background-color;
@@ -31,7 +31,7 @@ window#waybar {
 * ----------------------------------------------------- */
 
 #workspaces {
-    background-color: rgba(0,0,0,.2);
+    background-color: rgba(0, 0, 0, .2);
     margin: 3px 7px 3px 3px;
     padding: 0px 4px;
     border: 0px;
@@ -42,8 +42,8 @@ window#waybar {
 
 #workspaces button {
     border: 0px;
-    margin:4px 5px 4px 0px;
-    padding:0px 16px;
+    margin: 4px 5px 4px 0px;
+    padding: 0px 16px;
     color: @textcolor3;
     border-radius: 16px;
     transition: all 0.5s ease-in-out;
@@ -67,9 +67,9 @@ window#waybar {
 tooltip {
     border-radius: 10px;
     background-color: @backgroundlight;
-        opacity:0.8;
-    padding:20px;
-    margin:0px;
+    opacity: 0.8;
+    padding: 20px;
+    margin: 0px;
 }
 
 tooltip label {
@@ -83,24 +83,24 @@ tooltip label {
 #window {
     margin: 0px 15px 0px 0px;
     border-radius: 12px;
-    color:@textcolor;
-    font-size:14px;
-    font-weight:normal;
+    color: @textcolor;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 window#waybar.empty #window {
-    background-color:transparent;
+    background-color: transparent;
 }
 
 /* -----------------------------------------------------
 * Modules
 * ----------------------------------------------------- */
 
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
     margin-left: 0;
 }
 
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
     margin-right: 0;
 }
 
@@ -108,19 +108,19 @@ window#waybar.empty #window {
 * Custom Quicklinks
 * ----------------------------------------------------- */
 
-#custom-brave, 
-#custom-browser, 
-#custom-keybindings, 
-#custom-outlook, 
-#custom-filemanager, 
-#custom-teams, 
-#custom-chatgpt, 
-#custom-calculator, 
-#custom-windowsvm, 
-#custom-cliphist, 
-#custom-wallpaper, 
-#custom-settings, 
-#custom-wallpaper, 
+#custom-brave,
+#custom-browser,
+#custom-keybindings,
+#custom-outlook,
+#custom-filemanager,
+#custom-teams,
+#custom-chatgpt,
+#custom-calculator,
+#custom-windowsvm,
+#custom-cliphist,
+#custom-wallpaper,
+#custom-settings,
+#custom-wallpaper,
 #custom-system,
 #custom-hyprshade,
 #custom-hypridle,
@@ -132,8 +132,7 @@ window#waybar.empty #window {
 #custom-quicklink4,
 #custom-quicklink5,
 #custom-quicklink6,
-#mpd
-#custom-quicklink7,
+#mpd #custom-quicklink7,
 #custom-quicklink8,
 #custom-quicklink9,
 #custom-quicklink10,
@@ -145,15 +144,15 @@ window#waybar.empty #window {
 }
 
 #custom-tools {
-    margin-right:12px;
+    margin-right: 12px;
 }
 
 #custom-hyprshade {
-    margin-right:12px;
+    margin-right: 12px;
 }
 
 #custom-hypridle {
-    margin-right:16px;
+    margin-right: 16px;
 }
 
 #custom-hypridle.active {
@@ -184,8 +183,9 @@ window#waybar.empty #window {
     padding-right: 23px;
 }
 
-#custom-waybarthemes,#custom-system {
-    margin-right:15px;
+#custom-waybarthemes,
+#custom-system {
+    margin-right: 15px;
 }
 
 
@@ -194,7 +194,7 @@ window#waybar.empty #window {
     background-image: url("../assets/ml4w-icon.svg");
     background-position: center;
     background-repeat: no-repeat;
-    background-size: contain; 
+    background-size: contain;
     padding-right: 20px;
 }
 
@@ -241,8 +241,8 @@ window#waybar.empty #window {
 
 #custom-exit {
     margin: 0px 20px 0px 0px;
-    padding:0px;
-    font-size:16px;
+    padding: 0px;
+    font-size: 16px;
     color: @iconcolor;
 }
 
@@ -257,8 +257,7 @@ window#waybar.empty #window {
     margin: 0px 15px 0px 0px;
 }
 
-#custom-updates.green {
-}
+#custom-updates.green {}
 
 #custom-updates.yellow {
     color: #ff9a3c;
@@ -284,15 +283,18 @@ window#waybar.empty #window {
 * Hardware Group
 * ----------------------------------------------------- */
 
-#disk,#memory,#cpu,#language {
-    margin:0px;
-    padding:0px;
-    font-size:14px;
-    color:@iconcolor;
+#disk,
+#memory,
+#cpu,
+#language {
+    margin: 0px;
+    padding: 0px;
+    font-size: 14px;
+    color: @iconcolor;
 }
 
 #language {
-    margin-right:10px;
+    margin-right: 10px;
 }
 
 /* -----------------------------------------------------
@@ -355,7 +357,9 @@ window#waybar.empty #window {
 * Bluetooth
 * ----------------------------------------------------- */
 
-#bluetooth, #bluetooth.on, #bluetooth.connected {
+#bluetooth,
+#bluetooth.on,
+#bluetooth.connected {
     font-size: 14px;
     color: @textcolor;
     border-radius: 15px;
@@ -379,15 +383,16 @@ window#waybar.empty #window {
     margin: 10px 15px 10px 0px;
 }
 
-#battery.charging, #battery.plugged {
+#battery.charging,
+#battery.plugged {
     color: @textcolor;
 }
 
 @keyframes blink {
-to {
-    background-color: @backgroundlight;
-    color: @textcolor2;
-}
+    to {
+        background-color: @backgroundlight;
+        color: @textcolor2;
+    }
 }
 
 #battery.critical:not(.charging) {
@@ -404,14 +409,14 @@ to {
 * ----------------------------------------------------- */
 
 #tray {
-    margin:0px 10px 0px 0px;
+    margin: 0px 10px 0px 0px;
 }
 
-#tray > .passive {
+#tray>.passive {
     -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
     -gtk-icon-effect: highlight;
     background-color: #eb4d4b;
 }
@@ -425,12 +430,45 @@ to {
     color: #fff;
 }
 
-#mpd.disconnected {
+#mpd.disconnected {}
+
+#mpd.stopped {}
+
+#mpd.paused {}
+
+#playerctl {
+    background-color: rgba(0, 0, 0, .2);
+    margin-top: 2px;
+    margin-right: 20px;
+    padding: 4px 16px 0px;
+    border: 0px;
+    font-family: monospace;
+    font-size: 14px;
+    color: @textcolor3;
+    border-radius: 16px;
 }
 
-#mpd.stopped {
+#playerctl * {
+    transition: all 0.5s ease-in-out;
+    color: #ccc;
 }
 
-#mpd.paused {
+#playerctl *:hover {
+    color: #fff;
 }
 
+#custom-playerctl-pause-play {
+    margin: 0px 10px;
+}
+
+.Playing {
+    color: @textcolor3;
+}
+
+.Paused {
+    color: rgb(180, 180, 180);
+}
+
+#custom-playerctl-title {
+    margin-left: 20px;
+}
