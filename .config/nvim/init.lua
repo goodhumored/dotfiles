@@ -90,6 +90,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- Diagnostic keymaps
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+-- splitting
+vim.keymap.set("n", "<leader>-", "<cmd>sp<CR>", { desc = "Horizontal split" })
+vim.keymap.set("n", "<leader>|", "<cmd>vsp<CR>", { desc = "Vertical split" })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -1002,6 +1006,87 @@ require("lazy").setup({
 				vim.keymap.set({ "n", "v" }, "<leader>cl", "<cmd>CBccline<CR>", { desc = "[C]omment [L]ine" })
 				vim.keymap.set({ "n", "v" }, "<leader>cc", "<cmd>CBline<CR>", { desc = "[C]omment Simple [L]ine" })
 			end,
+		},
+		{
+			"utilyre/barbecue.nvim",
+			name = "barbecue",
+			version = "*",
+			dependencies = {
+				"SmiteshP/nvim-navic",
+				"nvim-tree/nvim-web-devicons", -- optional dependency
+			},
+			opts = {
+				-- configurations go here
+			},
+		},
+		{
+			"romgrk/barbar.nvim",
+			dependencies = {
+				"lewis6991/gitsigns.nvim", -- OPTIONAL: for git status
+				"nvim-tree/nvim-web-devicons", -- OPTIONAL: for file icons
+			},
+			init = function()
+				vim.g.barbar_auto_setup = false
+			end,
+			opts = {
+				sidebar_filetypes = {
+					-- Use the default values: {event = 'BufWinLeave', text = '', align = 'left'}
+					NvimTree = true,
+					-- Or, specify the text used for the offset:
+					undotree = {
+						text = "undotree",
+						align = "center", -- *optionally* specify an alignment (either 'left', 'center', or 'right')
+					},
+					-- Or, specify the event which the sidebar executes when leaving:
+					["neo-tree"] = { event = "BufWipeout" },
+					-- Or, specify all three
+					Outline = { event = "BufWinLeave", text = "symbols-outline", align = "right" },
+				},
+			},
+			version = "^1.0.0", -- optional: only update when a new 1.x version is released
+		},
+		{
+			"coffebar/neovim-project",
+			opts = {
+				projects = { -- define project roots
+					"~/Projects/*",
+					"~/.config/*",
+					"~/side-hustle/*",
+					"~/Job/dipal/repos/*",
+					"~/Uni/*/*/*",
+				},
+			},
+			init = function()
+				-- enable saving the state of plugins in the session
+				vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+			end,
+			config = function()
+				vim.keymap.set(
+					{ "n" },
+					"<leader>pf",
+					"<cmd>Telescope neovim-project discover<CR>",
+					{ desc = "[P]rojects [F]ind" }
+				)
+				vim.keymap.set(
+					{ "n" },
+					"<leader>pr",
+					"<cmd>Telescope neovim-project history<CR>",
+					{ desc = "[P]rojects [R]ecent" }
+				)
+				vim.keymap.set(
+					{ "n" },
+					"<leader>pl",
+					"<cmd>NeovimProjectLoadRecent<CR>",
+					{ desc = "[P]rojects load [L]ast" }
+				)
+			end,
+			dependencies = {
+				{ "nvim-lua/plenary.nvim" },
+				{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+				{ "Shatur/neovim-session-manager" },
+			},
+			lazy = false,
+			priority = 100,
 		},
 	},
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
