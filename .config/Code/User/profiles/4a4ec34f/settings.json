@@ -1,0 +1,46 @@
+{
+	"editor.tabCompletion": "on",
+	"editor.unicodeHighlight.allowedCharacters": {
+			"с": true
+	},
+	"editor.insertSpaces": false,
+	"editor.tabSize": 2,
+	"workbench.editor.pinnedTabSizing": "compact",
+	"workbench.startupEditor": "newUntitledFile",
+	"editor.smoothScrolling": true,
+	"editor.cursorSmoothCaretAnimation": "on",
+	"workbench.list.smoothScrolling": true,
+	"editor.fontSize": 15,
+	"editor.detectIndentation": false,
+	"editor.lineHeight": 18,
+	"security.workspace.trust.enabled": false,
+	"editor.linkedEditing": true,
+	"terminal.integrated.fontSize": 13,
+	"editor.fontFamily": "FiraCode Nerd Font",
+	"editor.fontLigatures": true,
+	"terminal.integrated.fontFamily": "FiraCode Nerd Font",
+	"emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+	"vetur.validation.template": false,
+	"vetur.validation.script": false,
+	"vetur.validation.style": false,
+	"sftp.debug": true,
+	"sftp.printDebugLog": true,
+	"files.associations": {
+		"*.php": "php"
+	},
+	"terminal.integrated.mouseWheelScrollSensitivity": 0.2,
+	"terminal.integrated.defaultProfile.linux": "zsh",
+	"git.confirmSync": false,
+	"git.autofetch": true,
+	"typescript.preferences.importModuleSpecifier": "relative",
+	"[typescript]": {
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+	},
+	"plantuml.render": "PlantUMLServer",
+	"plantuml.server": "https://www.plantuml.com/plantuml",
+	"editor.codeActionsOnSave": {},
+	"editor.formatOnSave": true,
+	"[typescriptreact]": {
+		"editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+	}
+}

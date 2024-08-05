@@ -1,0 +1,123 @@
+// Place your key bindings in this file to override the defaults
+[
+	{
+		"key": "alt+left",
+		"command": "cursorWordPartLeft"
+	},
+	{
+		"key": "shift+alt+left",
+		"command": "cursorWordPartLeftSelect"
+	},
+	{
+		"key": "alt+right",
+		"command": "cursorWordPartRight"
+	},
+	{
+		"key": "shift+alt+right",
+		"command": "cursorWordPartRightSelect"
+	},
+	{
+		"key": "ctrl+shift+alt+`",
+		"command": "extension.js-debug.createDebuggerTerminal"
+	},
+	{
+		"key": "ctrl+shift+\\",
+		"command": "workbench.action.terminal.split",
+		"when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+	},
+	{
+		"key": "ctrl+shift+5",
+		"command": "-workbench.action.terminal.split",
+		"when": "terminalFocus && terminalProcessSupported || terminalFocus && terminalWebExtensionContributedProfile"
+	},
+	{
+		"key": "ctrl+shift+\\",
+		"command": "workbench.action.terminal.splitActiveTab",
+		"when": "terminalProcessSupported && terminalTabsFocus"
+	},
+	{
+		"key": "ctrl+shift+5",
+		"command": "-workbench.action.terminal.splitActiveTab",
+		"when": "terminalProcessSupported && terminalTabsFocus"
+	},
+	{
+		"key": "ctrl+home",
+		"command": "workbench.action.terminal.focusPreviousPane",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "alt+up",
+		"command": "-workbench.action.terminal.focusPreviousPane",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "ctrl+end",
+		"command": "workbench.action.terminal.focusNextPane",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "alt+down",
+		"command": "-workbench.action.terminal.focusNextPane",
+		"when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "delete",
+		"command": "-workbench.action.terminal.killActiveTab",
+		"when": "terminalHasBeenCreated && terminalTabsFocus || terminalIsOpen && terminalTabsFocus || terminalProcessSupported && terminalTabsFocus"
+	},
+	{
+		"key": "ctrl+w",
+		"command": "workbench.action.terminal.kill",
+		"when": "terminalFocus"
+	},
+	{
+		"key": "shift+alt+down",
+		"command": "editor.action.copyLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+shift+alt+down",
+		"command": "-editor.action.copyLinesDownAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "shift+alt+up",
+		"command": "editor.action.copyLinesUpAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+shift+alt+up",
+		"command": "-editor.action.copyLinesUpAction",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "ctrl+shift+up",
+		"command": "editor.action.insertCursorAbove",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+shift+up",
+		"command": "-editor.action.insertCursorAbove",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+shift+down",
+		"command": "editor.action.insertCursorBelow",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "ctrl+shift+down",
+		"command": "-editor.action.insertCursorBelow",
+		"when": "editorTextFocus"
+	},
+	{
+		"key": "shift+alt+i",
+		"command": "editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+	},
+	{
+		"key": "ctrl+shift+i",
+		"command": "-editor.action.formatDocument",
+		"when": "editorHasDocumentFormattingProvider && editorTextFocus && !editorReadonly && !inCompositeEditor"
+	}
+]

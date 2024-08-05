@@ -1,0 +1,165 @@
+{
+  "editor.unicodeHighlight.allowedCharacters": {
+    "с": true
+  },
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "workbench.editor.pinnedTabSizing": "compact",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.smoothScrolling": true,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.list.smoothScrolling": true,
+  "editor.fontSize": 15,
+  "editor.detectIndentation": false,
+  "editor.lineHeight": 18,
+  "security.workspace.trust.enabled": false,
+  "editor.linkedEditing": true,
+  "terminal.integrated.fontSize": 13,
+  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.fontLigatures": true,
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "files.associations": {
+    "*.php": "php",
+    "*.tsx": "typescriptreact"
+  },
+  "terminal.integrated.mouseWheelScrollSensitivity": 0.2,
+  "terminal.integrated.defaultProfile.linux": "zsh",
+  "git.confirmSync": false,
+  "git.autofetch": true,
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "[typescript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "plantuml.render": "PlantUMLServer",
+  "plantuml.server": "https://www.plantuml.com/plantuml",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "auto.languages": {
+    "typescript": {
+      "symbol": "$",
+      "stringWrapper": "`"
+    }
+  },
+  "editor.stickyScroll.enabled": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "bitoAI.codeCompletion.enableCommentToCode": true,
+  "workbench.iconTheme": "emoji-file-icons",
+  "material-icon-theme.files.associations": {
+    "*.module.ts": "Nest-module",
+    "*.controller.ts": "Nest-controller",
+    "*.service.ts": "Nest-service",
+    "*.filter.ts": "Rubocop",
+    "*.exception.ts": "Mojo",
+    "*.interceptor.ts": "Nest-middleware",
+    "*.decorator.ts": "Razor",
+    "*.guard.ts": "Nest-guard",
+    "*.resolver.ts": "Nest-resolver",
+    "*.object.ts": "Graphql",
+    "*.schema.ts": "Database",
+    "*.model.ts": "Database",
+    "*.dto.ts": "Json",
+    "*.output-dto.ts": "Json",
+    "*.message.ts": "Raml",
+    "*.reply-message.ts": "Raml",
+    "*.spec.ts": "Vitest",
+    "*.enum.ts": "Purescript",
+    "main.ts": "Nest"
+  },
+  "material-icon-theme.folders.associations": {
+    "catalog": "Docs",
+    "application": "Controller",
+    "domain": "Core",
+    "dipalCommon": "Git",
+    "infrastructure": "Context",
+    "dtos": "Content",
+    "enums": "Enum"
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "*.js": "${capture}.js.map, ${capture}.min.js, ${capture}.d.ts",
+    "*.jsx": "${capture}.js",
+    "*.ts": "${capture}.ts, ${capture}.spec.ts, ${capture}.bench.ts",
+    "tsconfig.json": "tsconfig.*.json, vite.config.ts, .swcrc, nest-cli.json",
+    ".eslintrc.json": ".prettierrc",
+    "package.json": "package-lock.json, yarn.lock, pnpm-lock.yaml",
+    "Dockerfile": "Dockerfile, .dockerignore, docker-compose.yaml",
+    ".env": ".env, .env.example",
+    "Jenkinsfile": "Jenkinsfile, sonar-project.properties"
+  },
+  "typelens.showReferencesForProperties": false,
+  "typelens.singular": "eine Referenz",
+  "typelens.unusedcolor": "#97aecc",
+  "typelens.skiplanguages": [
+    "dockerfile",
+    "csharp",
+    "jsonc"
+  ],
+  "typelens.noreferences": "keine Referenzen",
+  "typelens.plural": "{0} Referenzen",
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "gprs.token": "d73139cbdf4f679050fcc4c21402888953ea9ef5",
+  "gprs.host": "https://git.dipal.ru/api/v1",
+  "vitest.commandLine": "run",
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "editor.inlineSuggest.showToolbar": "onHover",
+  "openproject.base_url": "https://board.dipal.ru",
+  "openproject.token": "8ce73a54a8e3e19ed698f0480569791d997aa68169710713866f8380d071c901",
+  "emmet.includeLanguages": {
+    "typescript": "typescriptreact"
+  },
+  // "emmet.triggerExpansionOnTab": true,
+  "emmet.showSuggestionsAsSnippets": true,
+  "emmet.showAbbreviationSuggestions": true,
+  "emmet.useInlineCompletions": true,
+  "[css]": {
+    "editor.defaultFormatter": "vscode.css-language-features"
+  },
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "emmet.excludeLanguages": [
+    "markdown",
+    "typescript"
+  ],
+  "window.zoomLevel": 1,
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "markdown.preview.scrollEditorWithPreview": false,
+  "markdown.preview.scrollPreviewWithEditor": false,
+  // "oxc_language_server.enable": true,
+  // "editor.stickyTabStops": true,
+  // "editor.tabCompletion": "on",
+  "workbench.editor.highlightModifiedTabs": true,
+  // "editor.tabFocusMode": true,
+  "comment-divider.languagesMap": {
+    "plantuml": [
+      "'",
+      "'"
+    ],
+  },
+  "workbench.productIconTheme": "bongocat",
+  "vscode-pets.throwBallWithMouse": true,
+  "vscode-pets.petSize": "small",
+  "vscode-pets.theme": "castle",
+  "window.menuBarVisibility": "toggle",
+  "[javascript]": {
+    "editor.defaultFormatter": "rvest.vs-code-prettier-eslint"
+  },
+  "workbench.editor.editorActionsLocation": "titleBar",
+  "window.customTitleBarVisibility": "auto",
+  "editor.unicodeHighlight.ambiguousCharacters": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "bitoAI.appearance.fontSize (Match with IDE Font)": false
+}

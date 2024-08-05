@@ -1,0 +1,18 @@
+Backups/
+databases/
+Local Storage/
+Service/
+logs/
+CachedExtensionVSIXs/
+WebStorage/
+User/workspaceStorage/
+User/History/
+User/globalStorage/
+User/profiles/*/globalStorage
+Cache/
+GPUCache/
+CachedProfilesData/
+DawnCache/
+Crashpad/
+CachedData/
+Service Worker/
