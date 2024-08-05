@@ -1,6 +1,20 @@
-title=$(playerctl metadata --format '{{markup_escape(artist)}} {{markup_escape(title)}}')
+title=$(playerctl metadata --format '{{markup_escape(artist)}} - {{markup_escape(title)}}')
 position=$(playerctl metadata --format '{{position}}')
 length=$(playerctl metadata --format '{{mpris:length}}')
+artUrl=$(playerctl metadata --format "{{mpris:artUrl}}")
+
+if [[ -n "$artUrl" ]]; then
+  cover=$(echo "$artUrl" | sed "s/file:\/\///g")
+else
+  cover="$HOME/.config/waybar/custom/placeholder.jpg"
+fi
+
+if [[ "$cover" != $(cat ~/.config/waybar/custom/cover.cache) ]]; then
+  echo "$cover" > ~/.config/waybar/custom/cover.cache
+  cp $cover ~/.config/waybar/custom/cover.jpg
+  killall waybar && waybar &
+  exit
+fi
 
 # Check if both position and length are not empty
 if [[ -n "$position" && -n "$length" && -n "$title" ]]; then
@@ -24,4 +38,9 @@ if [[ -n "$position" && -n "$length" && -n "$title" ]]; then
   done
 fi
 
-echo $(playerctl metadata --format "{\"text\": \"$title\r$progress_string\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}")
+if [[ -n "$progress_string" ]]; then
+  title+="\r$progress_string"
+fi
+
+echo $(playerctl metadata --format "{\"text\": \"$title\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\", \"tooltip\": \"$title ({{ duration(position) }}/{{ duration(mpris:length) }})\"}")
+

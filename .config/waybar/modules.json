@@ -1,5 +1,4 @@
 {
-  // Workspaces
   "hyprland/workspaces": {
     "on-scroll-up": "hyprctl dispatch workspace r-1",
     "on-scroll-down": "hyprctl dispatch workspace r+1",
@@ -11,7 +10,7 @@
       "2": "",
       "1": "",
       "3": "",
-      "4": "",
+      "4": "𝄞",
       "urgent": "",
       "focused": "",
       "default": ""
@@ -20,47 +19,15 @@
       "*": 5
     }
   },
-  "mpd": {
-    "format": "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ",
-    "format-disconnected": "Disconnected ",
-    "format-stopped": "no music",
-    "unknown-tag": "N/A",
-    "interval": 5,
-    "consume-icons": {
-      "on": " "
-    },
-    "random-icons": {
-      "off": "<span color=\"#f53c3c\"></span> ",
-      "on": " "
-    },
-    "repeat-icons": {
-      "on": " "
-    },
-    "single-icons": {
-      "on": "1 "
-    },
-    "state-icons": {
-      "paused": "",
-      "playing": ""
-    },
-    "tooltip-format": "MPD (connected)",
-    "tooltip-format-disconnected": "MPD (disconnected)"
-  },
-  "custom/playerctl": {
-      "interval": 1,
-      "tooltip": false,
-      "return-type": "json",
-      "format": "",
-      "format-icons": {
-          "Playing": "|>",
-          "Paused": "||"
-      },
-      "exec": "~/.config/waybar/custom/playerctl.sh",
-    "on-click-right": "playerctl next",
-      "on-click": "playerctl play-pause",
-      "on-scroll-up": "playerctl position 1+",
-      "on-scroll-down": "playerctl position 1-",
-      "signal": 5
+  "custom/pomodoro": {
+    "format-icons": ["🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"],
+    "return-type": "json",
+    "tooltip": true,
+    "format": "{icon} {}",
+    "on-click": "pomodoro",
+    "on-click-right": "pomodoro -k",
+    "exec": "~/.config/waybar/custom/pomodoro.sh",
+    "interval": 1
   },
   "group/playerctl": {
     "orientation": "inherit",
@@ -71,36 +38,31 @@
       "custom/playerctl-next",
       "custom/playerctl-title"
     ]
- 
-  },
-  "custom/playerctl-artist": {
-    "interval": 1,
-    "format": "{}",
-    "return-type": "json",
-    "exec": "playerctl metadata --format '{\"text\": \"{{markup_escape(artist)}}\", \"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
-    "on-click": "playerctl play-pause",
   },
   "custom/playerctl-title": {
-    "interval": 1,
+    "interval": 2,
     "format": "{}",
+    "hide-empty-text": true,
     "return-type": "json",
     "exec": "~/.config/waybar/custom/playerctl.sh",
     "on-click": "playerctl play-pause",
-      "on-scroll-up": "playerctl position 1+",
-      "on-scroll-down": "playerctl position 1-",
+    "on-scroll-up": "playerctl position 1+",
+    "on-scroll-down": "playerctl position 1-",
   },
   "custom/playerctl-prev": {
     "interval": 1,
     "format": "",
+    "tooltip-format": "previous track",
     "return-type": "json",
     "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
     "on-click": "playerctl previous",
-      "on-scroll-up": "playerctl position 1+",
-      "on-scroll-down": "playerctl position 1-",
+    "on-scroll-up": "playerctl position 1+",
+    "on-scroll-down": "playerctl position 1-",
   },
   "custom/playerctl-pause-play": {
     "interval": 1,
-   "format": "{icon}",
+    "format": "{icon}",
+    "tooltip-format": "pause/play",
     "format-icons": {
       "Playing": "",
       "Paused": ""
@@ -108,21 +70,19 @@
     "return-type": "json",
     "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
     "on-click": "playerctl play-pause",
-      "on-scroll-up": "playerctl position 1+",
-      "on-scroll-down": "playerctl position 1-",
+    "on-scroll-up": "playerctl position 1+",
+    "on-scroll-down": "playerctl position 1-",
   },
   "custom/playerctl-next": {
     "interval": 1,
     "format": "",
+    "tooltip-format": "next track",
     "return-type": "json",
     "exec": "playerctl metadata --format '{\"alt\": \"{{status}}\", \"class\": \"{{status}}\"}}'",
     "on-click": "playerctl next",
-      "on-scroll-up": "playerctl position 1+",
-      "on-scroll-down": "playerctl position 1-",
+    "on-scroll-up": "playerctl position 1+",
+    "on-scroll-down": "playerctl position 1-",
   },
-
-
-
   // Taskbar
   "wlr/taskbar": {
     "format": "{icon}",
@@ -139,7 +99,6 @@
       "Foot Server": "Terminal"
     }
   },
-
   // Hyprland Window
   "hyprland/window": {
     "rewrite": {
@@ -158,29 +117,7 @@
     "interval": 1
   },
 
-  // ML4W Welcome App
-  // Empty
-  "custom/empty": {
-    "format": ""
-  },
-
-  // Empty
-  "custom/tools": {
-    "format": "",
-    "tooltip-format": "Tools"
-  },
-
-  // Rofi Application Launcher
-  "custom/appmenu": {
-    // START APPS LABEL
-    "format": "",
-    // END APPS LABEL
-    "on-click": "sleep 0.2;rofi -show drun -replace",
-    "on-click-right": "~/dotfiles/hypr/scripts/keybindings.sh",
-    "tooltip-format": "Left: Open the application launcher\nRight: Show all keybindings"
-  },
-
-  // Rofi Application Launcher
+  // Wofi Application Launcher
   "custom/appmenuicon": {
     "format": "",
     "on-click": "wofi --show drun",
@@ -193,17 +130,6 @@
     "format": "",
     "on-click": "wlogout",
     "tooltip-format": "Power Menu"
-  },
-
-  // Keyboard State
-  "keyboard-state": {
-    "numlock": true,
-    "capslock": true,
-    "format": "{name} {icon}",
-    "format-icons": {
-      "locked": "",
-      "unlocked": ""
-    }
   },
 
   // System tray
@@ -220,12 +146,6 @@
     // START CLOCK FORMAT
     "format-alt": "{:%Y-%m-%d}"
     // END CLOCK FORMAT
-  },
-
-  // System
-  "custom/system": {
-    "format": "",
-    "tooltip": false
   },
 
   // CPU
@@ -246,10 +166,6 @@
     "format": "D {percentage_used}% ",
     "path": "/",
     "on-click": "~/dotfiles/.settings/systeminfo.sh"
-  },
-
-  "hyprland/language": {
-    "format": "/ K {short}"
   },
 
   // Group Hardware
@@ -277,45 +193,6 @@
       "custom/hypridle",
       "custom/hyprshade"
     ]
-  },
-
-  // Group Links
-  "group/links": {
-    "orientation": "horizontal",
-    "modules": [
-      "custom/chatgpt",
-      "custom/empty"      
-    ]
-  },
-
-  // Group Settings
-  "group/settings": {
-    "orientation": "inherit",
-    "drawer": {
-      "transition-duration": 300,
-      "children-class": "not-memory",
-      "transition-left-to-right": true
-    },
-    "modules": [
-      "custom/settings",
-      "custom/waybarthemes",
-      "custom/wallpaper"
-    ]
-  },
-
-  // Network
-  "network": {
-    "format": "{ifname}",
-    "format-wifi": "   {signalStrength}%",
-    "format-ethernet": "   {ifname}",
-    "format-disconnected": "Disconnected",
-    "tooltip-format": " {ifname} via {gwaddri}",
-    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
-    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
-    "tooltip-format-disconnected": "Disconnected",
-    "max-length": 50,
-    "on-click": "alacritty --class=cursor-float -e nmtui",
-    "on-click-right": "~/dotfiles/.settings/networkmanager.sh"
   },
 
   // Battery
@@ -364,14 +241,6 @@
     "on-click": "blueman-manager",
     "format-no-controller": ""
   },
-
-  // Other
-  "user": {
-    "format": "{user}",
-    "interval": 60,
-    "icon": false
-  },
-
   // backlight:
   "backlight": {
     "format": "{icon} {percent}%",
