@@ -1027,6 +1027,27 @@ require("lazy").setup({
 			},
 			init = function()
 				vim.g.barbar_auto_setup = false
+				vim.keymap.set("n", "<A-,>", "<Cmd>BufferPrevious<CR>", { desc = "Go tab left" })
+				vim.keymap.set("n", "<A-.>", "<Cmd>BufferNext<CR>", { desc = "Go tab right" })
+				-- Re-order to previous/next
+				vim.keymap.set("n", "<A-<>", "<Cmd>BufferMovePrevious<CR>", { desc = "Move tab left" })
+				vim.keymap.set("n", "<A->>", "<Cmd>BufferMoveNext<CR>", { desc = "Move tab right" })
+				-- Goto buffer in position...
+				vim.keymap.set("n", "<A-1>", "<Cmd>BufferGoto 1<CR>", { desc = "Go to tab 1" })
+				vim.keymap.set("n", "<A-2>", "<Cmd>BufferGoto 2<CR>", { desc = "Go to tab 2" })
+				vim.keymap.set("n", "<A-3>", "<Cmd>BufferGoto 3<CR>", { desc = "Go to tab 3" })
+				vim.keymap.set("n", "<A-4>", "<Cmd>BufferGoto 4<CR>", { desc = "Go to tab 4" })
+				vim.keymap.set("n", "<A-5>", "<Cmd>BufferGoto 5<CR>", { desc = "Go to tab 5" })
+				vim.keymap.set("n", "<A-6>", "<Cmd>BufferGoto 6<CR>", { desc = "Go to tab 6" })
+				vim.keymap.set("n", "<A-7>", "<Cmd>BufferGoto 7<CR>", { desc = "Go to tab 7" })
+				vim.keymap.set("n", "<A-8>", "<Cmd>BufferGoto 8<CR>", { desc = "Go to tab 8" })
+				vim.keymap.set("n", "<A-9>", "<Cmd>BufferGoto 9<CR>", { desc = "Go to tab 9" })
+				vim.keymap.set("n", "<A-0>", "<Cmd>BufferLast<CR>", { desc = "Go to tab 0" })
+				-- Pin/unpin buffer
+				vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>", { desc = "Pin tab" })
+				-- Close buffer
+				vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", { desc = "Close tab" })
+				vim.keymap.set("n", "<A-/>", "<Cmd>BufferPick<CR>", { desc = "Pick tab" })
 			end,
 			opts = {
 				sidebar_filetypes = {
@@ -1046,48 +1067,88 @@ require("lazy").setup({
 			version = "^1.0.0", -- optional: only update when a new 1.x version is released
 		},
 		{
-			"coffebar/neovim-project",
-			opts = {
-				projects = { -- define project roots
-					"~/Projects/*",
-					"~/.config/*",
-					"~/side-hustle/*",
-					"~/Job/dipal/repos/*",
-					"~/Uni/*/*/*",
-				},
-			},
-			init = function()
-				-- enable saving the state of plugins in the session
-				vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
-			end,
+			"ahmedkhalf/project.nvim",
 			config = function()
-				vim.keymap.set(
-					{ "n" },
-					"<leader>pf",
-					"<cmd>Telescope neovim-project discover<CR>",
-					{ desc = "[P]rojects [F]ind" }
-				)
-				vim.keymap.set(
-					{ "n" },
-					"<leader>pr",
-					"<cmd>Telescope neovim-project history<CR>",
-					{ desc = "[P]rojects [R]ecent" }
-				)
-				vim.keymap.set(
-					{ "n" },
-					"<leader>pl",
-					"<cmd>NeovimProjectLoadRecent<CR>",
-					{ desc = "[P]rojects load [L]ast" }
-				)
+				require("project_nvim").setup({
+					active = true,
+					on_config_done = nil,
+					manual_mode = false,
+					detection_methods = {
+						"pattern",
+					},
+					patterns = {
+						".git",
+						"pubspec.yaml",
+						"Cargo.toml",
+						".nvimproj",
+					},
+					show_hidden = true,
+					scope_chdir = "global",
+					silent_chdir = true,
+				})
+				require("telescope").load_extension("projects")
+				vim.keymap.set({ "n" }, "<leader>pf", function()
+					require("telescope").extensions.projects.projects({})
+				end, { desc = "[P]rojects [F]ind" })
 			end,
-			dependencies = {
-				{ "nvim-lua/plenary.nvim" },
-				{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
-				{ "Shatur/neovim-session-manager" },
-			},
-			lazy = false,
-			priority = 100,
 		},
+		{ "rafamadriz/friendly-snippets" },
+		{
+			"L3MON4D3/LuaSnip",
+			-- follow latest release.
+			version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+			-- install jsregexp (optional!).
+			build = "make install_jsregexp",
+			config = function()
+				-- load snippets from path/of/your/nvim/config/my-cool-snippets
+				require("luasnip.loaders.from_vscode").lazy_load({
+					paths = { "~/.config/Code/User/snippets/typescript.code-snippets" },
+				})
+			end,
+		},
+		-- {
+		-- 	"coffebar/neovim-project",
+		-- 	opts = {
+		-- 		projects = { -- define project roots
+		-- 			"~/Projects/*",
+		-- 			"~/.config/*",
+		-- 			"~/side-hustle/*",
+		-- 			"~/Job/dipal/repos/*",
+		-- 			"~/Uni/*/*/*",
+		-- 		},
+		-- 	},
+		-- 	init = function()
+		-- 		-- enable saving the state of plugins in the session
+		-- 		vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
+		-- 	end,
+		-- 	config = function()
+		-- 		vim.keymap.set(
+		-- 			{ "n" },
+		-- 			"<leader>pf",
+		-- 			"<cmd>Telescope neovim-project discover<CR>",
+		-- 			{ desc = "[P]rojects [F]ind" }
+		-- 		)
+		-- 		vim.keymap.set(
+		-- 			{ "n" },
+		-- 			"<leader>pr",
+		-- 			"<cmd>Telescope neovim-project history<CR>",
+		-- 			{ desc = "[P]rojects [R]ecent" }
+		-- 		)
+		-- 		vim.keymap.set(
+		-- 			{ "n" },
+		-- 			"<leader>pl",
+		-- 			"<cmd>NeovimProjectLoadRecent<CR>",
+		-- 			{ desc = "[P]rojects load [L]ast" }
+		-- 		)
+		-- 	end,
+		-- 	dependencies = {
+		-- 		{ "nvim-lua/plenary.nvim" },
+		-- 		{ "nvim-telescope/telescope.nvim", tag = "0.1.4" },
+		-- 		{ "Shatur/neovim-session-manager" },
+		-- 	},
+		-- 	lazy = false,
+		-- 	priority = 100,
+		-- },
 	},
 	-- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
 	-- init.lua. If you want these files, they are in the repository, so you can just download them and
