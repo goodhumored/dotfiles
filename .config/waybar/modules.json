@@ -25,7 +25,8 @@
     "tooltip": true,
     "format": "{icon} {}",
     "on-click": "pomodoro",
-    "on-click-right": "pomodoro -k",
+    "on-click-right": "pomodoro -s",
+    "on-click-middle": "pomodoro -k",
     "exec": "~/.config/waybar/custom/pomodoro.sh",
     "interval": 1
   },
@@ -217,7 +218,7 @@
     "format": "{icon}   {volume}%",
     "format-bluetooth": "{volume}% {icon}  {format_source}",
     "format-bluetooth-muted": " {icon} {format_source}",
-    "format-muted": " {format_source}",
+    "format-muted": "(M) {format_source}",
     "format-source": "{volume}% ",
     "format-source-muted": "",
     "format-icons": {

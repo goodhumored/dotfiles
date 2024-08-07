@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Get the output of the pomodoro command
 output=$(pomodoro -g)
 
