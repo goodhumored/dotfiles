@@ -18,4 +18,10 @@ CachedData/
 Service Worker/
 CachedConfigurations/
 Code Cache/
+Network Persistent State
+Session Storage
+Shared Dictionary
+TransportSecurity
+code.lock
+
 
