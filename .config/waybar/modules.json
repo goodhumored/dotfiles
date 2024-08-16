@@ -141,12 +141,8 @@
 
   // Clock
   "clock": {
-    "format": "{:%H:%M %a}",
-    // "timezone": "Russia/Moscow",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-    // START CLOCK FORMAT
-    "format-alt": "{:%Y-%m-%d}"
-    // END CLOCK FORMAT
+    "format": "{:%H:%M:%S\r<small>%d.%m.%Y</small>}",
+    "interval": 1,
   },
 
   // CPU
