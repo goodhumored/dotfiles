@@ -1,1 +1,0 @@
-tail -f /tmp/wobpipe
