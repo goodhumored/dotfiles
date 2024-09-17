@@ -495,4 +495,16 @@
   urgency = normal
   script = ~/.config/dunst/play-pomodoro.sh
 
+[low-battery]
+  appname = "poweralertd"
+  # summary = "Timer *"
+  category = "power.low"
+  script = ~/.config/dunst/play-low-battery-sound.sh
+
+[critical-battery]
+  appname = "poweralertd"
+  # summary = "Timer *"
+  category = "power.critical"
+  script = ~/.config/dunst/play-low-battery-sound.sh
+
 # vim: ft=cfg
