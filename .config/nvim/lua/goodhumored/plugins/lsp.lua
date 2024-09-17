@@ -203,7 +203,26 @@ return { -- LSP Configuration & Plugins
 					-- ol gur freire pbasvthengvba nobir. Hfrshy jura qvfnoyvat
 					-- pregnva srngherf bs na YFC (sbe rknzcyr, gheavat bss sbeznggvat sbe gffreire)
 					server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-					require("lspconfig")[server_name].setup(server)
+					local lspConfig = require("lspconfig")
+					lspConfig[server_name].setup(server)
+					lspConfig.gopls.setup({
+						settings = {
+							gopls = {
+								gofumpt = true,
+								golines = true,
+							},
+						},
+					})
+					-- https://microsoft.github.io/pyright/#/settings
+					lspConfig.pyright.setup({
+						capabilities = capabilities,
+						python = {
+							analysis = {
+								autoSearchPaths = true,
+								diagnosticMode = "workspace",
+							},
+						},
+					})
 				end,
 			},
 		})
