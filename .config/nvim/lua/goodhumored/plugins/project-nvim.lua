@@ -20,9 +20,9 @@ return {
 				silent_chdir = true,
 			})
 			require("telescope").load_extension("projects")
-			vim.keymap.set({ "n" }, "<leader>pf", function()
+			vim.keymap.set({ "n" }, "<leader>sp", function()
 				require("telescope").extensions.projects.projects({})
-			end, { desc = "[P]rojects [F]ind" })
+			end, { desc = "[S]earch [P]roject" })
 		end,
 	},
 	-- {

@@ -78,6 +78,16 @@ return {
 				},
 			}
 		end
+
+		dap.configurations.go = {
+			{
+				type = "go",
+				name = "Debug",
+				request = "launch",
+				program = "${file}",
+			},
+		}
+
 		-- setup dap config by VsCode launch.json file
 		local vscode = require("dap.ext.vscode")
 		local json = require("plenary.json")
@@ -90,6 +100,7 @@ return {
 			vscode.load_launchjs()
 		end
 	end,
+
 	keys = {
 		{ "<leader>d", "", desc = "+debug", mode = { "n", "v" } },
 		{
