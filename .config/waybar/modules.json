@@ -19,6 +19,9 @@
       "*": 5
     }
   },
+//           ╭───────────────────────────────────────────────────────────╮
+//           │                         pomodoro                          │
+//           ╰───────────────────────────────────────────────────────────╯
   "custom/pomodoro": {
     "format-icons": ["🕛", "🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚"],
     "return-type": "json",
@@ -30,6 +33,9 @@
     "exec": "~/.config/waybar/custom/pomodoro.sh",
     "interval": 1
   },
+ //          ╭───────────────────────────────────────────────────────────╮
+ //          │                          player                           │
+ //          ╰───────────────────────────────────────────────────────────╯
   "group/playerctl": {
     "orientation": "inherit",
     "children-class": "playerctl",
@@ -40,6 +46,7 @@
       "custom/playerctl-title"
     ]
   },
+
   "custom/playerctl-title": {
     "interval": 2,
     "format": "{}",
@@ -50,6 +57,7 @@
     "on-scroll-up": "playerctl position 1+",
     "on-scroll-down": "playerctl position 1-",
   },
+
   "custom/playerctl-prev": {
     "interval": 1,
     "format": "",
@@ -60,6 +68,7 @@
     "on-scroll-up": "playerctl position 1+",
     "on-scroll-down": "playerctl position 1-",
   },
+
   "custom/playerctl-pause-play": {
     "interval": 1,
     "format": "{icon}",
@@ -74,6 +83,7 @@
     "on-scroll-up": "playerctl position 1+",
     "on-scroll-down": "playerctl position 1-",
   },
+
   "custom/playerctl-next": {
     "interval": 1,
     "format": "",
@@ -84,6 +94,25 @@
     "on-scroll-up": "playerctl position 1+",
     "on-scroll-down": "playerctl position 1-",
   },
+
+  //           ╭───────────────────────────────────────────────────────────╮
+  //           │                   sunset (night light)                    │
+  //           ╰───────────────────────────────────────────────────────────╯
+  "custom/sunset": {
+    "interval": "once",
+    "tooltip": true,
+    "return-type": "json",
+    "format": "{icon}",
+    "format-icons": {
+      "on": "",
+      "off": ""
+    },
+    "exec": "fallback_latitude=50.1 fallback_longitude=8.7 latitude= longitude= ",
+    "on-click": "~/dotfiles/.config/scripts/sunset.sh toggle; pkill -RTMIN+6 waybar",
+    "exec-if": "/dotfiles/.config/scripts/sunset.sh check",
+    "signal": 6
+  },
+
   // Taskbar
   "wlr/taskbar": {
     "format": "{icon}",
