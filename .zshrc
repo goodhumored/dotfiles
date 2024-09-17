@@ -42,27 +42,6 @@ case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-alias n="pnpm"
-alias v="nvim"
-alias lv="lvim"
-alias vim="nvim"
-alias ni="n i"
-alias ns="n start"
-alias nsd="n start:dev"
-alias nt="n test"
-alias ntd="n test:dev"
-# pnpm end
-
-# eza
-if command -v eza > /dev/null; then
-  alias ls="eza"
-  alias ll="eza --long --git --icons=always --no-user --no-permissions"
-  alias tree="eza --tree"
-fi
-# cat -> bat
-if command -v bat > /dev/null; then 
-  alias cat="bat" 
-fi
 
 # fzf customization
 if command -v fd > /dev/null; then
@@ -110,10 +89,11 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 export PATH=/usr/local/texlive/2023/bin/x86_64-linux:$PATH
 
 export QSYS_ROOTDIR="/home/goodhumored/intelFPGA/22.1std/quartus/sopc_builder/bin"
-export TERM="screen-256color"
+# export TERM="xterm-256color"
 
 export LM_LICENSE_FILE=C:\\flexlm\\lic_modelsim.txt
 export PATH=$HOME/.local/bin:$PATH
 
-eval "$(zoxide init --cmd cd zsh)"
+source ~/.aliases.sh
+
 eval "$(fzf --zsh)"
