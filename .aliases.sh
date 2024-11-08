@@ -10,13 +10,17 @@ alias nt="n test"
 alias ntd="n test:dev"
 
 #   ─────────────────────────────── vim/nvim ───────────────────────────────
-if command -v zoxide > /dev/null && command -v nvim-zoxide > /dev/null; then
-  alias nvim="nvim-zoxide"
-fi
 alias nv="nvim"
 alias lv="lvim"
 alias vim="nvim"
 alias v="vim"
+if command -v zoxide > /dev/null && command -v nvim-zoxide > /dev/null; then
+  alias nv="nvim-zoxide"
+fi
+
+#   ───────────────────────────── drag n drop ───────────────────────────
+alias dnd="dragon-drop"
+alias cpdnd='cp $(dragon-drop -p -x -t .) .'
 
 #   ───────────────────────────────── eza ───────────────────────────────
 if command -v eza > /dev/null; then

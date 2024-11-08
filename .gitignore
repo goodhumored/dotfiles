@@ -1,5 +1,5 @@
 .config/nvim/lazy-lock.json
-.oh-my-zsh/cache/.zsh-update
+.oh-my-zsh/cache
 .config/Code/DawnGraphiteCache/
 .config/Code/DawnWebGPUCache/
 

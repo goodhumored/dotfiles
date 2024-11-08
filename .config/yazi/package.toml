@@ -1,0 +1,5 @@
+[plugin]
+deps = [{ use = "h-hg/yamb", rev = "0598b8d" }, { use = "dedukun/bookmarks", rev = "600f87c" }, { use = "Reledia/miller", rev = "40e0265" }, { use = "yazi-rs/plugins:jump-to-char", rev = "35100e7" }, { use = "ndtoan96/ouch", rev = "251da69" }]
+
+[flavor]
+deps = []

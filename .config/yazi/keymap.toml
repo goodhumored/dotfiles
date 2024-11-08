@@ -1,0 +1,67 @@
+[[manager.prepend_keymap]]
+on = [ "<Enter>" ]
+run = "enter"
+desc = "Enter the child directory"
+
+[[manager.prepend_keymap]]
+on = ["<C-o>"]
+run = "back"
+desc = "Jump back"
+
+[[manager.prepend_keymap]]
+on = [ "g", "c" ]
+run = "cd ~/dotfiles/"
+desc = "Go to the config directory"
+
+#   ───────────────────────────── jump to char ─────────────────────────────
+[[manager.prepend_keymap]]
+on   = "f"
+run  = "plugin jump-to-char"
+desc = "Jump to char"
+
+#   ─────────────────────────────── Compress ───────────────────────────────
+[[manager.prepend_keymap]]
+on = ["C"]
+run = "plugin ouch --args=zip"
+desc = "Compress with ouch"
+
+#   ────────────────────────────── bookmarks ────────────────────────────
+[[manager.prepend_keymap]]
+on = [ "m" ]
+run = "plugin yamb --args=save"
+desc = "Add bookmark"
+
+[[manager.prepend_keymap]]
+on = [ "'" ]
+run = "plugin yamb --args=jump_by_key"
+desc = "Jump bookmark by key"
+
+[[manager.prepend_keymap]]
+on = [ "\"" ]
+run = "plugin yamb --args=jump_by_fzf"
+desc = "Jump bookmark by fzf"
+
+[[manager.prepend_keymap]]
+on = [ "b", "d" ]
+run = "plugin yamb --args=delete_by_key"
+desc = "Delete bookmark by key"
+
+[[manager.prepend_keymap]]
+on = [ "b", "f" ]
+run = "plugin yamb --args=delete_by_fzf"
+desc = "Delete bookmark by fzf"
+
+[[manager.prepend_keymap]]
+on = [ "b", "D" ]
+run = "plugin yamb --args=delete_all"
+desc = "Delete all bookmarks"
+
+[[manager.prepend_keymap]]
+on = [ "b", "r" ]
+run = "plugin yamb --args=rename_by_key"
+desc = "Rename bookmark by key"
+
+[[manager.prepend_keymap]]
+on = [ "b", "R" ]
+run = "plugin yamb --args=rename_by_fzf"
+desc = "Rename bookmark by fzf"

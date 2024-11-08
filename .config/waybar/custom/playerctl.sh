@@ -1,7 +1,7 @@
-title=$(playerctl metadata --format '{{markup_escape(artist)}} - {{markup_escape(title)}}')
-position=$(playerctl metadata --format '{{position}}')
-length=$(playerctl metadata --format '{{mpris:length}}')
-artUrl=$(playerctl metadata --format "{{mpris:artUrl}}")
+title=$(playerctl --player=$(cat ~/.config/chosen_player) metadata --format '{{markup_escape(artist)}} - {{markup_escape(title)}}')
+position=$(playerctl --player=$(cat ~/.config/chosen_player) metadata --format '{{position}}')
+length=$(playerctl --player=$(cat ~/.config/chosen_player) metadata --format '{{mpris:length}}')
+artUrl=$(playerctl --player=$(cat ~/.config/chosen_player) metadata --format "{{mpris:artUrl}}")
 
 if [[ -n "$artUrl" ]]; then
   cover=$(echo "$artUrl" | sed "s/file:\/\///g")

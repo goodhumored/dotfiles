@@ -1,0 +1,53 @@
+{
+  "private readonly ...": {
+    "scope": "typescript",
+    "prefix": "prr",
+    "body": [
+      "private readonly _${1:name}: ${2:Type}"
+    ]
+  },
+  "props": {
+    "scope": "typescriptreact",
+    "prefix": "props",
+    "body": [
+      "{ className }: { className?: string }"
+    ]
+  },
+  "prop": {
+    "scope": "typescript",
+    "prefix": "prop",
+    "body": [
+      "private _${1:name}: ${3:Type}",
+      "get${2:Name}(): ${3:Type} {",
+      "  return this._${1:name}",
+      "}",
+      "set${2:Name}(${1:name}: ${3:Type}) {",
+      "  this._${1:name} = ${1:name}",
+      "}"
+    ]
+  },
+  "roprop": {
+    "scope": "typescript",
+    "prefix": "ro",
+    "body": [
+      "private readonly _${1:name}: ${3:Type};",
+      "get${2:Name}(): ${3:Type} {",
+      "  return this._${1:name}",
+      "}"
+    ]
+  },
+  "vs": {
+    "scope": "typescript",
+    "prefix": "vs",
+    "body": [
+      "vi.spyOn(${1:class}, \"${2:method}\")${3:.mock$4};"
+    ]
+  },
+  "faker lorem word": {
+    "scope": "typescript",
+    "prefix": "flw",
+    "body": [
+      "faker.lorem.word();"
+    ]
+  }
+}
