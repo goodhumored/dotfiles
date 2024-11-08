@@ -1,10 +1,16 @@
 lastupdatecheck: 0
 recentrepos:
-- /home/goodhumored/lazygit/lazygit
+    - /home/goodhumored/side-hustle/lambo/er_lamborgini
+    - /home/goodhumored/side-hustle/alexflora/frontend
+    - /home/goodhumored/lazygit/lazygit
 startuppopupversion: 5
+lastversion: 0.43.1
 customcommandshistory: []
 hidecommandlog: false
 ignorewhitespaceindiffview: false
 diffcontextsize: 3
+renamesimilaritythreshold: 50
 localbranchsortorder: recency
 remotebranchsortorder: alphabetical
+gitlogorder: topo-order
+gitlogshowgraph: always

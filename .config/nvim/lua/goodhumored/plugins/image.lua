@@ -9,6 +9,7 @@ return {
 		-- default config
 		image.setup({
 			backend = "kitty",
+			kitty_method = "normal",
 			integrations = {
 				markdown = {
 					enabled = true,

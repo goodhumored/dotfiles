@@ -1,9 +1,21 @@
 --  ───────────────────── disable highlight on search ─────────────────────
+vim.keymap.set({ "n", "i" }, "<C-H>", "<C-W>", { noremap = true, desc = "Delete word" })
+
+--  ───────────────────── disable highlight on search ─────────────────────
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+--  ────────────────────────── insert timestamp ───────────────────────
+vim.api.nvim_set_keymap("i", "<F3>", '<C-R>=strftime("%Y-%m-%dT%H:%M:%S.000Z")<CR>', { noremap = true, silent = true })
+
+--  ─────────────────────────── ctrl+left/right ───────────────────────────
+vim.api.nvim_set_keymap("i", "<C-Left>", "<C-o>b", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("i", "<C-Right>", "<C-o>w", { noremap = true, silent = true })
 
 --  ───────────────────────── Diagnostic keymaps ──────────────────────
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
+--  ─────────────────────── pasting in insert mode ────────────────────
+vim.keymap.set("i", "<C-V>", "<C-r>+", { desc = "" })
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                        terminal                         │
 --          ╰─────────────────────────────────────────────────────────╯

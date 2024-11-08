@@ -85,9 +85,9 @@ return {
 					filter_dir = function(name, rel_path, root)
 						return name ~= "node_modules" or name ~= "dist"
 					end,
-					-- is_test_file = function(file_path)
-					-- 	return file_path:match(".*%.spec%.ts") ~= nil
-					-- end,
+					is_test_file = function(file_path)
+						return file_path:match(".*%.spec%.ts") ~= nil
+					end,
 				}),
 			},
 		})

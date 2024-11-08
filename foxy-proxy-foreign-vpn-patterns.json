@@ -1,0 +1,79 @@
+[
+  {
+    "include": "include",
+    "type": "wildcard",
+    "title": "All",
+    "pattern": "*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "localhost all ports",
+    "pattern": "*://localhost:*/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "127 all ports",
+    "pattern": "*://127.0.0.1:*/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "localhost default port",
+    "pattern": "*://localhost/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "127 default port",
+    "pattern": "*://127.0.0.1/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "vk",
+    "pattern": "*//*.vk.*/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "dipal vpn",
+    "pattern": "*://jenkins.ci-cd.svc.cluster.local/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "local with port",
+    "pattern": "*://192.168.1.*:*/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "local no port",
+    "pattern": "*://192.168.1.*/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "guap",
+    "pattern": "*://*.guap.ru/*",
+    "active": true
+  },
+  {
+    "include": "exclude",
+    "type": "wildcard",
+    "title": "dipal",
+    "pattern": "*://*.dipal.ru/*",
+    "active": true
+  }
+]
