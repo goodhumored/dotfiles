@@ -8,3 +8,4 @@
 .config/Code/User/profiles/sync
 .config/Code/DawnWebGPUCache/
 .config/jirust/config.toml
+.env
