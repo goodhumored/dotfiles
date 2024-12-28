@@ -68,7 +68,7 @@ return { -- LSP Configuration & Plugins
 
 				-- Execute a code action, usually your cursor needs to be on top of an error
 				-- or a suggestion from your LSP for this to activate.
-				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				map("<space><space>", vim.lsp.buf.code_action, "Code Action")
 
 				-- WARN: This is not Goto Definition, this is Goto Declaration.
 				--  For example, in C this would take you to the header.
@@ -204,6 +204,16 @@ return { -- LSP Configuration & Plugins
 				validate = "onSave",
 				autoFixOnSave = true,
 				autoFix = true,
+			},
+
+			rust_analyzer = {
+				settings = {
+					["rust-analyzer"] = {
+						cargo = {
+							allFeatures = true,
+						},
+					},
+				},
 			},
 		}
 

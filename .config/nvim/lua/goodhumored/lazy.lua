@@ -9,13 +9,23 @@ if not vim.uv.fs_stat(lazypath) then
 	end
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
+local languagesPlugins = require("goodhumored.languages")
 
 -- [[ Configure and install plugins ]]
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
-	{ import = "goodhumored.plugins" },
-	{ import = "goodhumored.plugins.dap" },
-	{ import = "goodhumored.plugins.snippets" },
+	{ import = "goodhumored.appearance.code" },
+	{ import = "goodhumored.appearance.theme" },
+	{ import = "goodhumored.appearance.ui" },
+	{ import = "goodhumored.appearance.tint-unfocused" },
+	{ import = "goodhumored.comfort-features" },
+	{ import = "goodhumored.core" },
+	{ import = "goodhumored.core.dap" },
+	{ import = "goodhumored.editing" },
+	{ import = "goodhumored.editing.snippets" },
+	{ import = "goodhumored.integrations" },
+	{ import = "goodhumored.sessions" },
+	languagesPlugins.plugins,
 }, {
 	ui = {
 		-- If you are using a Nerd Font: set icons to an empty table which will use the

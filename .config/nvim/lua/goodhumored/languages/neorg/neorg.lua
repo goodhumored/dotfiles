@@ -2,6 +2,10 @@ return {
 	"nvim-neorg/neorg",
 	lazy = false,
 	version = "*",
+	dependencies = {
+		"nvim-neorg/lua-utils.nvim",
+		"pysan3/pathlib.nvim",
+	},
 	config = function()
 		local neorg = require("neorg")
 		neorg.setup({
