@@ -9,3 +9,4 @@
 .config/Code/DawnWebGPUCache/
 .config/jirust/config.toml
 .env
+.config/lazygit/state.yml

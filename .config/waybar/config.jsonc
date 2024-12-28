@@ -5,10 +5,10 @@
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
-        "custom/appmenuicon",
-        "wlr/taskbar",
-        "custom/pomodoro",
-        "custom/sunset"
+        //"custom/appmenuicon",
+        "wlr/taskbar"
+        //"custom/pomodoro",
+        //"custom/sunset"
     ],
     "modules-center": [
         "hyprland/workspaces",
@@ -22,5 +22,7 @@
         "clock",
         "battery"
     ],
-    "include": ["~/.config/waybar/modules.json"],
+    "include": [
+        "~/.config/waybar/modules.json"
+    ],
 }
