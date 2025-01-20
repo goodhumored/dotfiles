@@ -70,7 +70,7 @@
     "on-scroll-down": "playerctl --player=$(cat ~/.config/chosen_player) position 1-",
   },
   "custom/playerctl-prev": {
-    "interval": 1,
+    "interval": 10,
     "format": "",
     "tooltip-format": "previous track",
     "return-type": "json",
@@ -94,7 +94,7 @@
     "on-scroll-down": "playerctl --player=$(cat ~/.config/chosen_player) position 1-",
   },
   "custom/playerctl-next": {
-    "interval": 1,
+    "interval": 10,
     "format": "",
     "tooltip-format": "next track",
     "return-type": "json",
@@ -178,6 +178,7 @@
   "clock": {
     "format": "{:%H:%M:%S\r<small>%d.%m.%Y</small>}",
     "interval": 1,
+    "tooltip-format": "{calendar}"
   },
   // CPU
   "cpu": {
