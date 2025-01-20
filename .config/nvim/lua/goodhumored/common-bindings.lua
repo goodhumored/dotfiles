@@ -1,3 +1,8 @@
+-- Set <space> as the leader key
+--  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 --  ───────────────────── disable highlight on search ─────────────────────
 vim.keymap.set({ "n", "i" }, "<C-H>", "<C-W>", { noremap = true, desc = "Delete word" })
 

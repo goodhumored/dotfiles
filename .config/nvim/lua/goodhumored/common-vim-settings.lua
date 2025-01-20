@@ -1,8 +1,3 @@
--- Set <space> as the leader key
---  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 -- Set the number of spaces to use for each step of (auto)indent
 vim.opt.tabstop = 2 -- Number of spaces that a <Tab> counts for
 vim.opt.shiftwidth = 2 -- Number of spaces to use for each step of (auto)indent
@@ -20,6 +15,7 @@ vim.g.have_nerd_font = true
 --  For more options, you can see `:help option-list`
 
 -- Make line numbers default
+vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- Enable mouse mode, can be useful for resizing splits for example!
@@ -42,7 +38,10 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "number"
+
+-- Removes ~ after file end
+vim.opt.fillchars:append({ eob = " " })
 
 -- Decrease update time
 vim.opt.updatetime = 250
