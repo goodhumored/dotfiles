@@ -12,7 +12,7 @@ fi
 if [[ "$cover" != $(cat ~/.config/waybar/custom/cover.cache) ]]; then
   echo "$cover" > ~/.config/waybar/custom/cover.cache
   cp $cover ~/.config/waybar/custom/cover.jpg
-  killall waybar && waybar &
+  systemctl --user restart waybar
   exit
 fi
 
