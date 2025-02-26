@@ -1,3 +1,60 @@
+-- Function to evaluate the variable or expression under the cursor or selected in visual mode
+local function dap_evaluate_expression()
+	local dap = require("dap")
+	if not dap.session() then
+		print("No active debug session")
+		return
+	end
+
+	-- Determine if we're in visual mode and get the expression
+	local expression
+	local mode = vim.fn.mode()
+	if mode == "v" or mode == "V" or mode == "<C-v>" then
+		-- Visual mode: grab the selected text
+		local start_pos = vim.fn.getpos("v")
+		local end_pos = vim.fn.getpos(".")
+		local start_line, start_col = start_pos[2], start_pos[3]
+		local end_line, end_col = end_pos[2], end_pos[3]
+
+		-- Handle multi-line selections or single-line selections
+		if start_line == end_line then
+			local line = vim.fn.getline(start_line)
+			expression = string.sub(line, start_col, end_col)
+		else
+			local lines = vim.fn.getline(start_line, end_line)
+			lines[1] = string.sub(lines[1], start_col)
+			lines[#lines] = string.sub(lines[#lines], 1, end_col)
+			expression = table.concat(lines, "\n")
+		end
+
+		-- Exit visual mode after grabbing the selection
+		vim.api.nvim_command("normal! <Esc>")
+	else
+		-- Normal mode: grab the word under the cursor
+		expression = vim.fn.expand("<cword>")
+	end
+
+	-- Ask the debugger to evaluate the expression
+	dap.session():request("evaluate", {
+		expression = expression,
+		context = "repl",
+	}, function(err, response)
+		if err then
+			print("Error evaluating expression: " .. err.message)
+			return
+		end
+		if response and response.result then
+			-- Show the result in the command line
+			vim.api.nvim_echo({ { expression .. " = " .. response.result, "Normal" } }, true, {})
+		else
+			print("No result for expression: " .. expression)
+		end
+	end)
+end
+
+-- Bind it to a key, e.g., <leader>de
+vim.keymap.set("n", "<leader>de", dap_evaluate_expression, { desc = "Evaluate expression under cursor" })
+
 return {
 	"mfussenegger/nvim-dap",
 	recommended = true,
@@ -45,6 +102,20 @@ return {
 				{
 					type = "pwa-node",
 					request = "launch",
+					name = "Launch NestJS App",
+					program = "${workspaceFolder}/src/main.ts",
+					runtimeExecutable = "node",
+					runtimeArgs = { "-r", "ts-node/register" },
+					envFile = "${workspaceFolder}/.env",
+					trace = true,
+					cwd = "${workspaceFolder}",
+					sourceMaps = true,
+					protocol = "inspector",
+					console = "integratedTerminal",
+				},
+				{
+					type = "pwa-node",
+					request = "launch",
 					name = "Launch file",
 					program = "${file}",
 					cwd = "${workspaceFolder}",
@@ -88,6 +159,23 @@ return {
 			},
 		}
 
+		dap.adapters.cortex = {
+			type = "executable",
+			command = "arm-none-eabi-gdb",
+			args = { "-x", "${workspaceFolder}/debug.gdb" },
+		}
+
+		dap.configurations.c = {
+			{
+				name = "Debug STM32",
+				type = "cortex",
+				request = "launch",
+				program = "${workspaceFolder}/build/main.elf",
+				cwd = "${workspaceFolder}",
+				stopOnEntry = true,
+			},
+		}
+
 		-- setup dap config by VsCode launch.json file
 		local vscode = require("dap.ext.vscode")
 		local json = require("plenary.json")
@@ -109,6 +197,12 @@ return {
 				require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))
 			end,
 			desc = "Breakpoint Condition",
+		},
+		{
+			"<leader>de",
+			dap_evaluate_expression,
+			desc = "Evaluate expression under cursor or selection",
+			mode = { "n", "v" },
 		},
 		{
 			"<leader>db",
