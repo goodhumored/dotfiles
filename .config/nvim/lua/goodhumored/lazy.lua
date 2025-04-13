@@ -16,6 +16,7 @@ local languagesPlugins = require("goodhumored.languages")
 require("lazy").setup({
 	{ import = "goodhumored.appearance.code" },
 	{ import = "goodhumored.appearance.theme" },
+	{ import = "goodhumored.snacks.snacks-nvim" },
 	{ import = "goodhumored.appearance.ui" },
 	{ import = "goodhumored.appearance.tint-unfocused" },
 	{ import = "goodhumored.comfort-features" },

@@ -36,3 +36,10 @@ fi
 
 #   ──────────────────────── zoxide (cd -> zoxide) ──────────────────────
 eval "$(zoxide init --cmd cd zsh)"
+
+#   ──────────────────────────────── gitea ──────────────────────────────
+PROG=tea _CLI_ZSH_AUTOCOMPLETE_HACK=1 source "/home/goodhumored/.config/tea/autocomplete.zsh"
+if command -v tea > /dev/null; then
+  alias tprl="tea pr list"
+  alias tprl="tea pr list"
+fi

@@ -18,7 +18,7 @@ getFlagEmoji() {
 }
 # TODO: get keyboard name dynamically
 countryCode=$(hyprctl devices -j |
-  jq -r '.keyboards[] | select(.name == "at-translated-set-2-keyboard") | .active_keymap' |
+  jq -r '.keyboards[] | select(.main == true) | .active_keymap' |
   cut -c1-2 |
   tr 'a-z' 'A-Z')
 

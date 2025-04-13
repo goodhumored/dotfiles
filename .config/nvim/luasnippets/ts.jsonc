@@ -67,17 +67,17 @@
 		]
 	},
 	"react prop": {
-		"scope": "typescript",
+		"scope": "typescriptreact",
 		"prefix": "comp",
 		"body": [
 			"import React from \"react\";",
 			"",
-			"export default function ${1:name}({className}: {className?: string}) {",
-			" return (",
-			"   <${2:div} className={`${className}`}>",
-			"     $0",
-			"     </${2:div}>",
+			"export default function ${1:name}({ className }: { className?: string }) {",
+			"  return (",
+			"    <${2:div} className={`\\${className}`}>",
+			"    </${2:div}>",
 			" )",
+			"      ${0:{\/* asdf *\/}}",
 			"}"
 		]
 	},

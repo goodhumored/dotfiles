@@ -12,8 +12,8 @@ return {
 			load = {
 				["core.defaults"] = {},
 				["core.concealer"] = {},
-				["core.integrations.image"] = {},
-				["core.latex.renderer"] = {},
+				-- ["core.integrations.image"] = {},
+				-- ["core.latex.renderer"] = {},
 				["core.export"] = {
 					config = { -- Note that this table is optional and doesn't need to be provided
 						-- Configuration here

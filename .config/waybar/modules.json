@@ -152,8 +152,8 @@
   },
   "custom/layout": {
     "exec": "~/.config/waybar/get_layout.sh",
-    "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next",
-    "on-click-right": "hyprctl switchxkblayout at-translated-set-2-keyboard prev",
+    "on-click": "hyprctl switchxkblayout all next",
+    "on-click-right": "hyprctl switchxkblayout all prev",
     "interval": 1
   },
   // Wofi Application Launcher

@@ -43,6 +43,12 @@ case ":$PATH:" in
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 
+GO_HOME="$(go env GOPATH)/bin"
+case ":$PATH:" in
+  *":$GO_HOME:"*) ;;
+  *) export PATH="$GO_HOME:$PATH" ;;
+esac
+
 # fzf customization
 if command -v fd > /dev/null; then
   export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
