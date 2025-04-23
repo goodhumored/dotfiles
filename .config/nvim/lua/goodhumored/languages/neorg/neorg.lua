@@ -45,35 +45,35 @@ return {
 	end,
 
 	keys = {
-		{
-			"<leader>nw",
-			":Neorg workspace ",
-			desc = "[N]eorg [W]orkspaces",
-		},
-		{
-			"<leader>nj",
-			":Neorg journal<CR>",
-			desc = "[N]eorg [J]ournal",
-		},
-		{
-			"<leader>ni",
-			":Neorg index<CR>",
-			desc = "[N]eorg [I]ndex",
-		},
-		{
-			"<leader>nT",
-			":Neorg toc qflist<CR>",
-			desc = "[N]eorg [T]able of contents",
-		},
-		{
-			"<leader>nr",
-			":Neorg return<CR>",
-			desc = "[N]eorg [R]eturn",
-		},
-		{
-			"<leader>tl",
-			":Neorg render-latex<CR>",
-			desc = "[N]eorg [L]atex",
-		},
+		-- {
+		-- 	"<leader>nw",
+		-- 	":Neorg workspace ",
+		-- 	desc = "[N]eorg [W]orkspaces",
+		-- },
+		-- {
+		-- 	"<leader>nj",
+		-- 	":Neorg journal<CR>",
+		-- 	desc = "[N]eorg [J]ournal",
+		-- },
+		-- {
+		-- 	"<leader>ni",
+		-- 	":Neorg index<CR>",
+		-- 	desc = "[N]eorg [I]ndex",
+		-- },
+		-- {
+		-- 	"<leader>nT",
+		-- 	":Neorg toc qflist<CR>",
+		-- 	desc = "[N]eorg [T]able of contents",
+		-- },
+		-- {
+		-- 	"<leader>nr",
+		-- 	":Neorg return<CR>",
+		-- 	desc = "[N]eorg [R]eturn",
+		-- },
+		-- {
+		-- 	"<leader>tl",
+		-- 	":Neorg render-latex<CR>",
+		-- 	desc = "[N]eorg [L]atex",
+		-- },
 	},
 }
