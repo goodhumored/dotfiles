@@ -58,7 +58,9 @@ return {
 		local api = require("nvim-tree.api")
 		vim.keymap.set("n", "<leader>e", api.tree.toggle, { desc = "[E]xplorer" })
 		vim.keymap.set("n", "<leader>E", function()
+			-- api.tree.open() -- Просто открываем дерево
 			api.tree.find_file({ open = true, focus = true })
+			-- api.tree.find_file({ focus = true })
 		end, { desc = "Focus file in [E]xplorer" })
 	end,
 }

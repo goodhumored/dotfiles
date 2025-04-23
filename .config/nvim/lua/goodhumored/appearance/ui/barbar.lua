@@ -42,6 +42,16 @@ return {
 			-- Or, specify all three
 			Outline = { event = "BufWinLeave", text = "symbols-outline", align = "right" },
 		},
+		custom_buffer_name = function(bufnr)
+			local filetype = vim.api.nvim_buf_get_option(bufnr, "filetype")
+			if filetype == "markdown" and vim.b[bufnr].obsidian_note then
+				local note = vim.b[bufnr].obsidian_note
+				return note.title
+					or table.concat(note.aliases, ", ")
+					or vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t:r")
+			end
+			return vim.fn.fnamemodify(vim.api.nvim_buf_get_name(bufnr), ":t")
+		end,
 	},
 	version = "^1.0.0", -- optional: only update when a new 1.x version is released
 }

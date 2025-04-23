@@ -4,32 +4,33 @@ return {
 	config = function()
 		require("lualine").setup({
 			options = {
-				theme = "iceberg_dark",
-				component_separators = "",
-				section_separators = { left = "", right = "" },
+				icons_enabled = true, -- Включить иконки
+				theme = "gruvbox-material",
+				component_separators = { left = " ", right = " " },
+				section_separators = { left = " ", right = " " },
+				disabled_filetypes = { -- Отключить lualine для определённых типов файлов
+					statusline = {},
+					winbar = {},
+				},
+				-- always_divide_middle = true,
+				globalstatus = true, -- Один статусбар для всех окон
 			},
 			sections = {
-				lualine_a = { { "mode", separator = { left = "" }, right_padding = 2 } },
-				lualine_b = { "filename", "branch" },
-				lualine_c = {
-					"%=", --[[ add your center compoentnts here in place of this comment ]]
-				},
-				lualine_x = {},
-				lualine_y = { "filetype", "progress" },
-				lualine_z = {
-					{ "location", separator = { right = "" }, left_padding = 2 },
-				},
+				lualine_a = { "mode" }, -- Режим (Normal, Insert, etc.)
+				lualine_b = { "branch", "diagnostics" }, -- Git и диагностика
+				lualine_c = { "filename" }, -- Имя файла
+				lualine_x = { "fileformat", "filetype" }, -- Кодировка, формат, тип файла
+				lualine_y = { "progress" }, -- Прогресс в файле
+				lualine_z = { "location" }, -- Положение курсора
 			},
 			inactive_sections = {
-				lualine_a = { "filename" },
+				lualine_a = {},
 				lualine_b = {},
-				lualine_c = {},
-				lualine_x = {},
+				lualine_c = { "filename" },
+				lualine_x = { "location" },
 				lualine_y = {},
-				lualine_z = { "location" },
+				lualine_z = {},
 			},
-			tabline = {},
-			extensions = {},
 		})
 	end,
 }
