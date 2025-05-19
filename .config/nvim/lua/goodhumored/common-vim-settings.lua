@@ -145,3 +145,118 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt_local.linebreak = true
 	end,
 })
+
+--          ╭─────────────────────────────────────────────────────────╮
+--          │               autoclose untouched buffers               │
+--          ╰─────────────────────────────────────────────────────────╯
+
+-- Отладочная функция для логирования
+-- local function debug_log(msg)
+-- 	print("[BufferAutoClose] " .. msg)
+-- end
+--
+-- -- Инициализация признака для новых буферов
+-- vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile" }, {
+-- 	callback = function()
+-- 		local buf = vim.api.nvim_get_current_buf()
+-- 		local buf_name = vim.api.nvim_buf_get_name(buf)
+-- 		local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
+-- 		-- Пропускаем специальные буферы и nvim-tree
+-- 		if buftype == "" and not buf_name:match("^NvimTree_") then
+-- 			vim.api.nvim_buf_set_var(buf, "ever_modified", false)
+-- 			debug_log("Initialized ever_modified=false for buffer " .. buf .. " (" .. buf_name .. ")")
+-- 		else
+-- 			debug_log("Skipped initialization for buffer " .. buf .. " (" .. buf_name .. "), buftype: " .. buftype)
+-- 		end
+-- 	end,
+-- })
+--
+-- -- Отслеживаем изменения в буфере
+-- vim.api.nvim_create_autocmd({ "TextChanged", "InsertLeave" }, {
+-- 	callback = function()
+-- 		local buf = vim.api.nvim_get_current_buf()
+-- 		local buf_name = vim.api.nvim_buf_get_name(buf)
+-- 		local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
+-- 		local modified = vim.api.nvim_buf_get_option(buf, "modified")
+-- 		-- Пропускаем специальные буферы и nvim-tree
+-- 		if buftype == "" and not buf_name:match("^NvimTree_") and modified then
+-- 			vim.api.nvim_buf_set_var(buf, "ever_modified", true)
+-- 			debug_log("Set ever_modified=true for buffer " .. buf .. " (" .. buf_name .. ")")
+-- 		else
+-- 			debug_log(
+-- 				"Skipped modification check for buffer "
+-- 					.. buf
+-- 					.. " ("
+-- 					.. buf_name
+-- 					.. "), buftype: "
+-- 					.. buftype
+-- 					.. ", modified: "
+-- 					.. tostring(modified)
+-- 			)
+-- 		end
+-- 	end,
+-- })
+--
+-- -- Закрываем немодифицированные буферы, которые никогда не изменялись
+-- vim.api.nvim_create_autocmd({ "BufLeave", "BufHidden" }, {
+-- 	callback = function()
+-- 		local buf = vim.api.nvim_get_current_buf()
+-- 		local buf_name = vim.api.nvim_buf_get_name(buf)
+-- 		local buftype = vim.api.nvim_buf_get_option(buf, "buftype")
+-- 		-- Пропускаем специальные буферы и nvim-tree
+-- 		if buftype ~= "" or buf_name:match("^NvimTree_") then
+-- 			debug_log("Skipped buffer " .. buf .. " (" .. buf_name .. "), buftype: " .. buftype)
+-- 			return
+-- 		end
+-- 		-- Проверяем существование ever_modified
+-- 		local ever_modified = false
+-- 		local success, result = pcall(vim.api.nvim_buf_get_var, buf, "ever_modified")
+-- 		if success then
+-- 			ever_modified = result
+-- 		else
+-- 			debug_log("No ever_modified for buffer " .. buf .. " (" .. buf_name .. "), assuming false")
+-- 		end
+-- 		-- Проверяем условия для закрытия
+-- 		local modified = vim.api.nvim_buf_get_option(buf, "modified")
+-- 		-- local is_hidden = vim.fn.bufwinnr(buf) == -1 || true
+-- 		local is_hidden = true
+-- 		local is_loaded = vim.api.nvim_buf_is_loaded(buf)
+-- 		debug_log(
+-- 			"Checking buffer "
+-- 				.. buf
+-- 				.. " ("
+-- 				.. buf_name
+-- 				.. "): modified="
+-- 				.. tostring(modified)
+-- 				.. ", hidden="
+-- 				.. tostring(is_hidden)
+-- 				.. ", loaded="
+-- 				.. tostring(is_loaded)
+-- 				.. ", ever_modified="
+-- 				.. tostring(ever_modified)
+-- 		)
+-- 		if not modified and is_hidden and is_loaded and not ever_modified then
+-- 			local delete_success, delete_error = pcall(vim.api.nvim_buf_delete, buf, { force = true })
+-- 			if delete_success then
+-- 				debug_log("Deleted buffer " .. buf .. " (" .. buf_name .. ")")
+-- 			else
+-- 				debug_log("Failed to delete buffer " .. buf .. " (" .. buf_name .. "): " .. tostring(delete_error))
+-- 			end
+-- 		else
+-- 			debug_log(
+-- 				"Buffer "
+-- 					.. buf
+-- 					.. " ("
+-- 					.. buf_name
+-- 					.. ") not deleted: "
+-- 					.. (modified and "modified" or "")
+-- 					.. " "
+-- 					.. (not is_hidden and "not hidden" or "")
+-- 					.. " "
+-- 					.. (not is_loaded and "not loaded" or "")
+-- 					.. " "
+-- 					.. (ever_modified and "ever_modified" or "")
+-- 			)
+-- 		end
+-- 	end,
+-- })

@@ -26,6 +26,7 @@ return {
 		vim.keymap.set("n", "<A-p>", "<Cmd>BufferPin<CR>", { desc = "Pin tab" })
 		-- Close buffer
 		vim.keymap.set("n", "<A-c>", "<Cmd>BufferClose<CR>", { desc = "Close tab" })
+		vim.keymap.set("n", "<A-C>", "<Cmd>BufferCloseAllButCurrentOrPinned<CR>", { desc = "Close others" })
 		vim.keymap.set("n", "<A-/>", "<Cmd>BufferPick<CR>", { desc = "Pick tab" })
 	end,
 	opts = {

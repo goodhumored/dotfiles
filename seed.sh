@@ -80,7 +80,7 @@ PUBLIC_KEY=$(cat "$KEY_PATH.pub")
 NEW_PASS=""
 if [ "$ANONYMOUS" = false ]; then
     mkdir -p "$PASS_DIR"
-    NEW_PASS="$(pass generate "$PASS_NAME" 16 | tail -n1)"
+    NEW_PASS="$(pass generate -n "$PASS_NAME" 16 | tail -n1 | sed -r 's/\x1B\[[0-9;]*[mK]//g')"
     echo "DEBUG: Generated password: '$NEW_PASS'"
 fi
 
@@ -114,6 +114,9 @@ echo "\$SUDO_PASS" | sudo -S chmod 700 "/home/\$NEW_USER"
 # Set password
 if [ -n "\$NEW_PASS" ]; then
     echo "DEBUG: Setting password for \$NEW_USER: \$NEW_PASS"
+    export NEW_USER="\$NEW_USER"
+    export NEW_PASS="\$NEW_PASS"
+    echo "DEBUG: Setting password echo \"\$NEW_USER:\$NEW_PASS\" | chpasswd"
     echo "\$SUDO_PASS" | sudo -S bash -c "echo \"\$NEW_USER:\$NEW_PASS\" | chpasswd"
 fi
 
@@ -138,7 +141,7 @@ ssh "$SERVER_NAME" bash -c "$(cat << ENDSSH
 set -e
 git clone https://github.com/goodhumored/dotfiles
 cd dotfiles
-./init.sh
+echo "$SUDO_PASS" | sudo -S ./init.sh
 ENDSSH
 )"
 

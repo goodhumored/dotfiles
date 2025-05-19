@@ -63,9 +63,6 @@ vim.keymap.set("n", "th", ":tabprev<CR>", { desc = "[T]ab left", noremap = true,
 vim.keymap.set("n", "tj", ":tabfirst<CR>", { desc = "[T]ab home", noremap = true, silent = true })
 vim.keymap.set("n", "tk", ":tablast<CR>", { desc = "[T]ab end", noremap = true, silent = true })
 
---  ───────────────────────── close other buffers ─────────────────────────
-vim.keymap.set("n", "<A-S-c>", ':%bdelete|edit #|normal `"<CR>', { noremap = true, silent = true })
-
 --          ╭─────────────────────────────────────────────────────────╮
 --          │                      Moving lines                       │
 --          ╰─────────────────────────────────────────────────────────╯

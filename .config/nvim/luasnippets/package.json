@@ -8,6 +8,13 @@
           "typescriptreact"
         ],
         "path": "./ts.jsonc"
+      },
+      {
+        "language": [
+          "javascript",
+          "html"
+        ],
+        "path": "./three_js.jsonc"
       }
     ]
   }

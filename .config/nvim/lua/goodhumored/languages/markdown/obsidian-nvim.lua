@@ -78,6 +78,12 @@ return {
 				end,
 				opts = { noremap = true, buffer = true, desc = "[O]bsidian [W]orkspace" },
 			},
+			["<leader>on"] = {
+				action = function()
+					return vim.cmd("ObsidianNew")
+				end,
+				opts = { noremap = true, buffer = true, desc = "[O]bsidian [N]ew" },
+			},
 			-- Toggle check-boxes.
 			["<leader>ch"] = {
 				action = function()
@@ -97,9 +103,9 @@ return {
 			-- Optional, if you keep daily notes in a separate directory.
 			folder = "daily",
 			-- Optional, if you want to change the date format for the ID of daily notes.
-			date_format = "%Y-%m-%d",
+			date_format = "%Y-%m-%d-[%a№%W]",
 			-- Optional, if you want to change the date format of the default alias of daily notes.
-			alias_format = "%B %-d, %Y",
+			alias_format = " %-d %B %Y [%a№%W], %A",
 			-- Optional, default tags to add to each new daily note created.
 			default_tags = { "daily-notes" },
 			-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
@@ -152,6 +158,16 @@ return {
 			},
 		},
 
+		-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
+		-- URL it will be ignored but you can customize this behavior here.
+		---@param url string
+		follow_url_func = function(url)
+			-- Open the URL in the default web browser.
+			-- vim.fn.jobstart({ "xdg-open", url }) -- Mac OS
+			-- vim.fn.jobstart({"xdg-open", url})  -- linux
+			-- vim.cmd(':silent exec "!start ' .. url .. '"') -- Windows
+			vim.ui.open(url) -- need Neovim 0.10.0+
+		end,
 		-- Specify how to handle attachments.
 		attachments = {
 			-- The default folder to place images in via `:ObsidianPasteImg`.

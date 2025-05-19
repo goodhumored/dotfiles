@@ -184,7 +184,7 @@
 		"scope": "typescript"
 	},
 	"it": {
-		"body": "it('${1:should }', () => {\n\t$0\n});",
+		"body": "it('should $1', () => {\n\t$0\n});",
 		"description": "creates an it block",
 		"prefix": "it",
 		"scope": "typescript"
@@ -203,25 +203,25 @@
 		"scope": "typescript"
 	},
 	"it.only": {
-		"body": "it.only('${1:should }', () => {\n\t$0\n});",
+		"body": "it.only('should $1', () => {\n\t$0\n});",
 		"description": "creates an it block that runs only",
 		"prefix": "ito",
 		"scope": "typescript"
 	},
 	"it.skip": {
-		"body": "it.skip('${1:should }', () => {\n\t$0\n});",
+		"body": "it.skip('should $1', () => {\n\t$0\n});",
 		"description": "creates an it block that will be skipped",
 		"prefix": "its",
 		"scope": "typescript"
 	},
 	"it.todo": {
-		"body": "it.todo('${1:should }');",
+		"body": "it.todo('should $1');",
 		"description": "creates a test placeholder",
 		"prefix": "itt",
 		"scope": "typescript"
 	},
 	"it:async": {
-		"body": "it('${1:should }', async () => {\n\t$0\n});",
+		"body": "it('should $1', async () => {\n\t$0\n});",
 		"description": "creates an it block with async callback function",
 		"prefix": "ita",
 		"scope": "typescript"
@@ -237,7 +237,7 @@
 			"describe('${1:Name of the group}', () => {\n",
 			"\tlet ${2:cut};\n",
 			"\tbeforeEach(() => {\n\t\t$2 = $3;\n\t});\n",
-			"\ttest('${1:should }', () => {",
+			"\ttest('should $1', () => {",
 			"\t\texpect($2).toBe($0);",
 			"\t});\n",
 			"});"
@@ -247,7 +247,7 @@
 		"scope": "typescript"
 	},
 	"test": {
-		"body": "test('${1:should }', () => {\n\t$0\n});",
+		"body": "test('should $1', () => {\n\t$0\n});",
 		"description": "creates a test block",
 		"prefix": "test",
 		"scope": "typescript"
@@ -280,25 +280,25 @@
 		"scope": "typescript"
 	},
 	"test.only": {
-		"body": "test.only('${1:should }', () => {\n\t$0\n});",
+		"body": "test.only('should $1', () => {\n\t$0\n});",
 		"description": "creates a test block  that runs only",
 		"prefix": "testo",
 		"scope": "typescript"
 	},
 	"test.skip": {
-		"body": "test.skip('${1:should }', () => {\n\t$0\n});",
+		"body": "test.skip('should $1', () => {\n\t$0\n});",
 		"description": "creates a test block that will be skipped",
 		"prefix": "tests",
 		"scope": "typescript"
 	},
 	"test.todo": {
-		"body": "test.todo('${1:should }');",
+		"body": "test.todo('should $1');",
 		"description": "creates a test placeholder",
 		"prefix": "testt",
 		"scope": "typescript"
 	},
 	"test:async": {
-		"body": "test('${1:should }', async () => {\n\t$0\n});",
+		"body": "test('should $1', async () => {\n\t$0\n});",
 		"description": "creates an test block with async callback function",
 		"prefix": "testa",
 		"scope": "typescript"
