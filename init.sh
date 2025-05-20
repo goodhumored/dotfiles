@@ -70,7 +70,7 @@ if [ "$OS" = "ubuntu" ]; then
     NVIM_VERSION=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
     wget -O /tmp/nvim-linux64.tar.gz "https://github.com/neovim/neovim/releases/download/${NVIM_VERSION}/nvim-linux-x86_64.tar.gz"
     sudo tar -C /usr/local -xzf /tmp/nvim-linux64.tar.gz
-    sudo ln -sf /usr/local/nvim-linux64/bin/nvim /usr/local/bin/nvim
+    sudo ln -sf /usr/local/nvim-linux-x86_64/bin/nvim /usr/local/bin/nvim
     rm /tmp/nvim-linux64.tar.gz
 
     # Install thefuck
