@@ -10,10 +10,11 @@ alias nt="n test"
 alias ntd="n test:dev"
 
 #   ─────────────────────────────── vim/nvim ───────────────────────────────
-alias nv="nvim"
-alias lv="lvim"
-alias vim="nvim"
-alias v="vim"
+NVIM_PREFIX="NVIM_USE_COPILOT=true LC_TIME=en_US proxychains -q"
+alias nv="$NVIM_PREFIX nvim ."
+alias lv="$NVIM_PREFIX lvim"
+alias v="$NVIM_PREFIX vim"
+alias vim="$NVIM_PREFIX nvim"
 if command -v zoxide > /dev/null && command -v nvim-zoxide > /dev/null; then
   alias nv="nvim-zoxide"
 fi

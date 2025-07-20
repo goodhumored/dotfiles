@@ -38,7 +38,7 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 -- Keep signcolumn on by default
-vim.opt.signcolumn = "number"
+-- vim.opt.signcolumn = "number"
 
 -- Removes ~ after file end
 vim.opt.fillchars:append({ eob = " " })

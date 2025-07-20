@@ -42,11 +42,41 @@ return {
 				end,
 				opts = { noremap = false, expr = true, buffer = true },
 			},
+			["<leader>oe"] = {
+				action = function()
+					return vim.cmd("ObsidianExtractNote")
+				end,
+				opts = { noremap = true, buffer = true, desc = "[O]bsidian [E]xtract note" },
+			},
+			["<leader>os"] = {
+				action = function()
+					return vim.cmd("ObsidianSearch")
+				end,
+				opts = { noremap = true, buffer = true, desc = "[O]bsidian [S]earch note" },
+			},
+			["<leader>oi"] = {
+				action = function()
+					return require("obsidian").get_client():open_note("inbox.md")
+				end,
+				opts = { noremap = true, buffer = true, desc = "[O]bsidian open [I]nbox note" },
+			},
+			["<leader>ojt"] = {
+				action = function()
+					return vim.cmd("ObsidianToday")
+				end,
+				opts = { noremap = true, buffer = true, desc = "Open [t]oday's daily note" },
+			},
 			["<leader>njt"] = {
 				action = function()
 					return vim.cmd("ObsidianToday")
 				end,
 				opts = { noremap = true, buffer = true, desc = "Open [t]oday's daily note" },
+			},
+			["<leader>ojT"] = {
+				action = function()
+					return vim.cmd("ObsidianTomorrow")
+				end,
+				opts = { noremap = true, buffer = true, desc = "Open [t]omorrow's daily note" },
 			},
 			["<leader>njT"] = {
 				action = function()
@@ -54,11 +84,24 @@ return {
 				end,
 				opts = { noremap = true, buffer = true, desc = "Open [t]omorrow's daily note" },
 			},
+			["<leader>ojy"] = {
+				action = function()
+					return vim.cmd("ObsidianYesterday")
+				end,
+				opts = { noremap = true, buffer = true, desc = "Open [y]esterday's daily note" },
+			},
+
 			["<leader>njy"] = {
 				action = function()
 					return vim.cmd("ObsidianYesterday")
 				end,
 				opts = { noremap = true, buffer = true, desc = "Open [y]esterday's daily note" },
+			},
+			["<leader>oj"] = {
+				action = function()
+					return vim.cmd("ObsidianDailies")
+				end,
+				opts = { noremap = true, buffer = true, desc = "Obsidian dailies" },
 			},
 			["<leader>nj"] = {
 				action = function()
@@ -103,9 +146,9 @@ return {
 			-- Optional, if you keep daily notes in a separate directory.
 			folder = "daily",
 			-- Optional, if you want to change the date format for the ID of daily notes.
-			date_format = "%Y-%m-%d-[%a№%W]",
+			date_format = "%Y-%m-%d-%a",
 			-- Optional, if you want to change the date format of the default alias of daily notes.
-			alias_format = " %-d %B %Y [%a№%W], %A",
+			alias_format = " %-d %B %Y [%a], %A",
 			-- Optional, default tags to add to each new daily note created.
 			default_tags = { "daily-notes" },
 			-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
